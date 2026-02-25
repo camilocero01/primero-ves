@@ -1,0 +1,115 @@
+---
+import { siteConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+const { contacto, horarios, cta } = siteConfig;
+const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
+---
+
+<section id="contacto" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="w-16 h-1 mx-auto mb-6" style={`background-color: var(--color-secundario)`}></div>
+      <h2 class="text-4xl font-bold mb-6" style={`color: var(--color-primario)`}>
+        Información de Contacto
+      </h2>
+      <div class="w-16 h-1 mx-auto" style={`background-color: var(--color-secundario)`}></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Columna 1: Contacto -->
+      <div class="bg-white p-8 shadow-sm">
+        <h3 class="text-xl font-bold mb-6" style={`color: var(--color-primario)`}>Contacto</h3>
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <Icon name="phone" size={20} class="mt-1 shrink-0" style={`color: var(--color-secundario)`} />
+            <div>
+              <p class="text-sm text-gray-500 mb-1">Teléfono</p>
+              <a href={`tel:${contacto.telefono}`} class="text-gray-800 hover:underline">{contacto.telefono}</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <Icon name="mail" size={20} class="mt-1 shrink-0" style={`color: var(--color-secundario)`} />
+            <div>
+              <p class="text-sm text-gray-500 mb-1">Email</p>
+              <a href={`mailto:${contacto.email}`} class="text-gray-800 hover:underline">{contacto.email}</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <Icon name="message-circle" size={20} class="mt-1 shrink-0 text-green-600" />
+            <div>
+              <p class="text-sm text-gray-500 mb-1">WhatsApp</p>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="text-green-600 hover:underline font-medium">
+                Enviar mensaje
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2: Ubicación -->
+      <div class="bg-white p-8 shadow-sm">
+        <h3 class="text-xl font-bold mb-6" style={`color: var(--color-primario)`}>Ubicación</h3>
+        <div class="flex items-start gap-4 mb-6">
+          <Icon name="map-pin" size={20} class="mt-1 shrink-0" style={`color: var(--color-secundario)`} />
+          <div>
+            <p class="text-gray-800">{contacto.direccion}</p>
+            <p class="text-gray-600">{contacto.ciudad}, {contacto.estado}</p>
+            <p class="text-gray-600">{contacto.pais} {contacto.codigoPostal && `C.P. ${contacto.codigoPostal}`}</p>
+          </div>
+        </div>
+        <a
+          href={contacto.googleMapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-medium"
+          style={`color: var(--color-primario)`}
+        >
+          <Icon name="external-link" size={14} />
+          Abrir en Google Maps
+        </a>
+      </div>
+
+      <!-- Columna 3: Horarios -->
+      <div class="bg-white p-8 shadow-sm">
+        <h3 class="text-xl font-bold mb-6" style={`color: var(--color-primario)`}>Horarios</h3>
+        <div class="space-y-4">
+          {horarios.map((h) => (
+            <div class="flex justify-between border-b border-gray-100 pb-3 last:border-0">
+              <span class="text-gray-800 font-medium">{h.dias}</span>
+              <span class="text-gray-600">{h.horas}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="mt-8 shadow-sm overflow-hidden">
+      <iframe
+        src={contacto.googleMapsEmbed}
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación del consultorio"
+      ></iframe>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-10 py-4 text-white font-semibold transition-all duration-300 hover:shadow-lg"
+        style={`background-color: var(--color-primario)`}
+      >
+        {cta.principal}
+        <Icon name="arrow-right" size={18} />
+      </a>
+    </div>
+  </div>
+</section>

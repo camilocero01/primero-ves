@@ -1,0 +1,65 @@
+---
+import { siteConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+const { doctor } = siteConfig;
+---
+
+<section id="sobre-mi" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+      <!-- Imagen - columna estrecha -->
+      <div class="lg:col-span-2">
+        <div class="relative">
+          <img
+            src={doctor.foto}
+            alt={`${doctor.titulo} ${doctor.nombre}`}
+            class="w-full aspect-[3/4] object-cover shadow-lg"
+            loading="lazy"
+          />
+          <!-- Marco decorativo -->
+          <div class="absolute -bottom-3 -right-3 w-full h-full border-2 -z-10" style={`border-color: var(--color-secundario)`}></div>
+        </div>
+      </div>
+
+      <!-- Contenido - columna ancha -->
+      <div class="lg:col-span-3">
+        <div class="w-16 h-1 mb-6" style={`background-color: var(--color-secundario)`}></div>
+        <h2 class="text-4xl font-bold mb-2" style={`color: var(--color-primario)`}>
+          Acerca de {doctor.titulo} {doctor.nombre}
+        </h2>
+        <p class="text-lg mb-8" style={`color: var(--color-secundario)`}>
+          {doctor.especialidad}
+        </p>
+
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          {doctor.biografia}
+        </p>
+
+        <!-- Credenciales en estilo clásico -->
+        <div class="border-t border-b border-gray-200 py-6 space-y-4">
+          <div class="flex items-center gap-4">
+            <Icon name="check-circle" size={20} style={`color: var(--color-secundario)`} />
+            <span class="text-gray-800">{doctor.especialidad}</span>
+          </div>
+          {doctor.subespecialidad && (
+            <div class="flex items-center gap-4">
+              <Icon name="check-circle" size={20} style={`color: var(--color-secundario)`} />
+              <span class="text-gray-800">{doctor.subespecialidad}</span>
+            </div>
+          )}
+          {doctor.cedulaProfesional && (
+            <div class="flex items-center gap-4">
+              <Icon name="shield" size={20} style={`color: var(--color-secundario)`} />
+              <span class="text-gray-800">Cédula Profesional: {doctor.cedulaProfesional}</span>
+            </div>
+          )}
+          <div class="flex items-center gap-4">
+            <Icon name="award" size={20} style={`color: var(--color-secundario)`} />
+            <span class="text-gray-800">Certificación vigente por el Consejo de la Especialidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

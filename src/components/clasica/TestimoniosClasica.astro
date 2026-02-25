@@ -1,0 +1,44 @@
+---
+import { siteConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+const { testimonios } = siteConfig;
+---
+
+<section id="testimonios" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="w-16 h-1 mx-auto mb-6" style={`background-color: var(--color-secundario)`}></div>
+      <h2 class="text-4xl font-bold mb-6" style={`color: var(--color-primario)`}>
+        Opiniones de Pacientes
+      </h2>
+      <div class="w-16 h-1 mx-auto" style={`background-color: var(--color-secundario)`}></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonios.map((testimonio) => (
+        <div class="border border-gray-200 p-8 relative">
+          <!-- Comilla decorativa -->
+          <div class="absolute -top-4 left-8 w-8 h-8 flex items-center justify-center text-white text-xl font-bold" style={`background-color: var(--color-secundario)`}>
+            "
+          </div>
+          
+          <div class="flex gap-1 mb-4 mt-2">
+            {Array.from({ length: testimonio.calificacion }).map(() => (
+              <Icon name="star-filled" size={16} class="text-yellow-400" />
+            ))}
+          </div>
+          
+          <p class="text-gray-600 leading-relaxed mb-6 italic">
+            {testimonio.texto}
+          </p>
+          
+          <div class="border-t border-gray-100 pt-4">
+            <p class="font-semibold" style={`color: var(--color-primario)`}>{testimonio.nombre}</p>
+            <p class="text-sm text-gray-400">Paciente verificado</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

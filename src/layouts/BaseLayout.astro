@@ -1,0 +1,130 @@
+---
+import '../styles/global.css';
+import { siteConfig } from '../config/siteConfig';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = siteConfig.seo.title,
+  description = siteConfig.seo.description,
+} = Astro.props;
+
+const {
+  seo,
+  doctor,
+  colores,
+  contacto,
+  horarios,
+  servicios,
+} = siteConfig;
+
+// Structured Data - Schema.org para médicos
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': seo.structuredData.type,
+  name: `${doctor.titulo} ${doctor.nombre}`,
+  description: seo.description,
+  image: doctor.foto,
+  telephone: contacto.telefono,
+  email: contacto.email,
+  url: seo.canonical,
+  priceRange: seo.structuredData.priceRange,
+  medicalSpecialty: seo.structuredData.medicalSpecialty,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: contacto.direccion,
+    addressLocality: contacto.ciudad,
+    addressRegion: contacto.estado,
+    addressCountry: contacto.pais,
+    postalCode: contacto.codigoPostal,
+  },
+  openingHoursSpecification: horarios.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.dias,
+    opens: h.horas.split(' - ')[0],
+    closes: h.horas.split(' - ')[1],
+  })),
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios Médicos',
+    itemListElement: servicios.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'MedicalProcedure',
+        name: s.nombre,
+        description: s.descripcion,
+      },
+    })),
+  },
+};
+---
+
+<!doctype html>
+<html lang={seo.locale.replace('_', '-')} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={seo.keywords.join(', ')} />
+    <link rel="canonical" href={seo.canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content={`${doctor.titulo} ${doctor.nombre}`} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={seo.canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={seo.ogImage} />
+    <meta property="og:locale" content={seo.locale} />
+    <meta property="og:site_name" content={seo.siteName} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={seo.ogImage} />
+    
+    <!-- Google Verification -->
+    {seo.googleVerification && (
+      <meta name="google-site-verification" content={seo.googleVerification} />
+    )}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Fuentes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Colores dinámicos -->
+    <style define:vars={{
+      colorPrimario: colores.primario,
+      colorSecundario: colores.secundario,
+    }}>
+      :root {
+        --color-primario: var(--colorPrimario);
+        --color-secundario: var(--colorSecundario);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>

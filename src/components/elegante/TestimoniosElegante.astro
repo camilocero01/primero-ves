@@ -1,0 +1,55 @@
+---
+import { siteConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+const { testimonios } = siteConfig;
+---
+
+<section id="testimonios" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-sm font-semibold tracking-widest uppercase" style={`color: var(--color-secundario)`}>
+        Testimonios
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-3 mb-6" style={`color: var(--color-primario)`}>
+        Lo Que Dicen Mis Pacientes
+      </h2>
+      <p class="text-gray-600 text-lg">
+        La satisfacción de mis pacientes es mi mayor recompensa.
+      </p>
+    </div>
+
+    <!-- Grid de testimonios -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonios.map((testimonio, index) => (
+        <div class="bg-gray-50 rounded-2xl p-8 relative">
+          <!-- Quote mark -->
+          <div class="absolute top-6 right-8 text-6xl font-heading opacity-10" style={`color: var(--color-primario)`}>
+            "
+          </div>
+          
+          <!-- Estrellas -->
+          <div class="flex gap-1 mb-4">
+            {Array.from({ length: testimonio.calificacion }).map(() => (
+              <Icon name="star-filled" size={18} class="text-yellow-400" />
+            ))}
+          </div>
+          
+          <!-- Texto -->
+          <p class="text-gray-700 leading-relaxed mb-6 italic">
+            "{testimonio.texto}"
+          </p>
+          
+          <!-- Nombre -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style={`background-color: var(--color-primario)`}>
+              {testimonio.nombre.charAt(0)}
+            </div>
+            <p class="font-semibold text-gray-900">{testimonio.nombre}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

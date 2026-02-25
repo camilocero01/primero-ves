@@ -1,0 +1,78 @@
+---
+import { siteConfig } from '../config/siteConfig';
+import Icon from './Icon.astro';
+
+const { doctor, contacto, redesSociales, seo } = siteConfig;
+
+const socialLinks = Object.entries(redesSociales).filter(([_, url]) => url);
+---
+
+<footer class="text-white" style={`background-color: var(--color-primario)`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Info del doctor -->
+      <div>
+        <h3 class="text-2xl font-bold mb-4 font-heading">
+          {doctor.titulo} {doctor.nombre}
+        </h3>
+        <p class="text-white/70 mb-6">{doctor.especialidad}</p>
+        {doctor.cedulaProfesional && (
+          <p class="text-white/50 text-sm">
+            Cédula Profesional: {doctor.cedulaProfesional}
+          </p>
+        )}
+      </div>
+
+      <!-- Contacto rápido -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4" style={`color: var(--color-secundario)`}>
+          Contacto
+        </h4>
+        <div class="space-y-3">
+          <a href={`tel:${contacto.telefono}`} class="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+            <Icon name="phone" size={18} />
+            <span>{contacto.telefono}</span>
+          </a>
+          <a href={`mailto:${contacto.email}`} class="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+            <Icon name="mail" size={18} />
+            <span>{contacto.email}</span>
+          </a>
+          <div class="flex items-start gap-3 text-white/70">
+            <Icon name="map-pin" size={18} class="mt-0.5 shrink-0" />
+            <span>{contacto.direccion}, {contacto.ciudad}, {contacto.estado}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4" style={`color: var(--color-secundario)`}>
+          Síguenos
+        </h4>
+        <div class="flex gap-4">
+          {socialLinks.map(([name, url]) => (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              aria-label={name}
+            >
+              <Icon name={name} size={18} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Separador -->
+    <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/40 text-sm">
+        &copy; {new Date().getFullYear()} {doctor.titulo} {doctor.nombre}. Todos los derechos reservados.
+      </p>
+      <p class="text-white/30 text-xs">
+        Diseñado por <a href="https://primeroves.com" class="hover:text-white/60 transition-colors" style={`color: var(--color-secundario)`}>PrimeroVes</a>
+      </p>
+    </div>
+  </div>
+</footer>

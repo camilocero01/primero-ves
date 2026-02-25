@@ -1,0 +1,45 @@
+---
+import { siteConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+const { servicios } = siteConfig;
+---
+
+<section id="servicios" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4" style={`color: var(--color-primario)`}>
+        Servicios
+      </h2>
+      <div class="w-20 h-1 mx-auto rounded-full mb-6" style={`background-color: var(--color-secundario)`}></div>
+      <p class="text-gray-600 text-lg">
+        Tratamientos de vanguardia con tecnología de última generación.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {servicios.map((servicio, index) => (
+        <div class="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden">
+          <!-- Acento de color en hover -->
+          <div class="absolute top-0 left-0 w-full h-1 transition-all duration-500 group-hover:h-2" style={`background-color: var(--color-secundario)`}></div>
+          
+          <div class="relative">
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-white transition-transform duration-300 group-hover:scale-110"
+              style={`background-color: var(--color-primario)`}
+            >
+              <Icon name={servicio.icono} size={30} />
+            </div>
+            
+            <h3 class="text-xl font-bold mb-3 text-gray-900">
+              {servicio.nombre}
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              {servicio.descripcion}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

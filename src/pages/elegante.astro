@@ -1,0 +1,29 @@
+---
+/**
+ * PLANTILLA ELEGANTE
+ * Página completa con todas las secciones para la plantilla elegante.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+import HeroElegante from '../components/elegante/HeroElegante.astro';
+import ServiciosElegante from '../components/elegante/ServiciosElegante.astro';
+import SobreMiElegante from '../components/elegante/SobreMiElegante.astro';
+import TestimoniosElegante from '../components/elegante/TestimoniosElegante.astro';
+import ContactoElegante from '../components/elegante/ContactoElegante.astro';
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <HeroElegante />
+    <ServiciosElegante />
+    <SobreMiElegante />
+    <TestimoniosElegante />
+    <ContactoElegante />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</BaseLayout>

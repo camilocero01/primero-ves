@@ -1,0 +1,29 @@
+---
+/**
+ * PLANTILLA MODERNA
+ * Página completa con todas las secciones para la plantilla moderna.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+import HeroModerna from '../components/moderna/HeroModerna.astro';
+import ServiciosModerna from '../components/moderna/ServiciosModerna.astro';
+import SobreMiModerna from '../components/moderna/SobreMiModerna.astro';
+import TestimoniosModerna from '../components/moderna/TestimoniosModerna.astro';
+import ContactoModerna from '../components/moderna/ContactoModerna.astro';
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <HeroModerna />
+    <ServiciosModerna />
+    <SobreMiModerna />
+    <TestimoniosModerna />
+    <ContactoModerna />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</BaseLayout>

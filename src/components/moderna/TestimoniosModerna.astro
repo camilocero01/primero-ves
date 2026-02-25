@@ -1,0 +1,48 @@
+---
+import { siteConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+const { testimonios } = siteConfig;
+---
+
+<section id="testimonios" class="py-24 relative overflow-hidden" style={`background-color: var(--color-primario)`}>
+  <!-- Patrón -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 30px 30px;"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Testimonios
+      </h2>
+      <div class="w-20 h-1 mx-auto rounded-full mb-6" style={`background-color: var(--color-secundario)`}></div>
+      <p class="text-white/60 text-lg">
+        Historias reales de pacientes satisfechos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonios.map((testimonio) => (
+        <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300">
+          <div class="flex gap-1 mb-4">
+            {Array.from({ length: testimonio.calificacion }).map(() => (
+              <Icon name="star-filled" size={16} class="text-yellow-400" />
+            ))}
+          </div>
+          
+          <p class="text-white/80 leading-relaxed mb-6">
+            "{testimonio.texto}"
+          </p>
+          
+          <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold" style={`background-color: var(--color-secundario); color: white`}>
+              {testimonio.nombre.charAt(0)}
+            </div>
+            <p class="font-semibold text-white">{testimonio.nombre}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

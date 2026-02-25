@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* ========================================
+   PRIMEROVES - Estilos Globales
+   ======================================== */
+
+@theme {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --color-primary: var(--color-primario, #1B4D6E);
+  --color-secondary: var(--color-secundario, #C9A96E);
+  --color-primary-light: color-mix(in srgb, var(--color-primario) 15%, white);
+  --color-primary-dark: color-mix(in srgb, var(--color-primario) 100%, black 20%);
+  --color-secondary-light: color-mix(in srgb, var(--color-secundario) 15%, white);
+}
+
+/* Animaciones suaves */
+@utility animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@utility animate-slide-left {
+  animation: slideLeft 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Scroll suave en toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilos base del body */
+body {
+  font-family: var(--font-body);
+}
+
+/* Encabezados con fuente serif elegante */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
