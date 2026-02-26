@@ -19,9 +19,15 @@ const navItems = [
   { label: 'Testimonios', href: '#testimonios' },
   { label: 'Contacto', href: '#contacto' },
 ];
+
+// Plantillas con hero oscuro necesitan texto claro en el header
+const darkHero = plantilla === 'moderna';
+const textClass = darkHero ? 'text-white/80 hover:text-white' : 'text-gray-600 hover:text-gray-900';
+const logoTextStyle = darkHero ? 'color: white' : `color: var(--color-primario)`;
+const menuBtnClass = darkHero ? 'text-white hover:bg-white/10' : 'text-gray-600 hover:bg-gray-100';
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header" data-dark-hero={darkHero ? 'true' : 'false'}>
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
@@ -30,7 +36,7 @@ const navItems = [
           style={`background-color: var(--color-primario)`}>
           {doctor.nombre.charAt(0)}
         </div>
-        <span class="text-lg font-semibold tracking-tight hidden sm:block" style={`color: var(--color-primario)`}>
+        <span class="header-logo-text text-lg font-semibold tracking-tight hidden sm:block" style={logoTextStyle}>
           {doctor.titulo} {doctor.nombre.split(' ')[0]}
         </span>
       </a>
@@ -40,7 +46,7 @@ const navItems = [
         {navItems.map((item) => (
           <a
             href={item.href}
-            class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full"
+            class={`header-nav-link text-sm font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full ${textClass}`}
             style="--tw-after-bg: var(--color-secundario)"
           >
             {item.label}
@@ -60,7 +66,7 @@ const navItems = [
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100"
+        class={`md:hidden p-2 rounded-lg header-menu-btn ${menuBtnClass}`}
         aria-label="Abrir menú"
       >
         <Icon name="menu" size={24} />
@@ -95,13 +101,49 @@ const navItems = [
 <script>
   // Header scroll effect
   const header = document.getElementById('main-header');
-  window.addEventListener('scroll', () => {
+  const isDarkHero = header?.dataset.darkHero === 'true';
+
+  function updateHeaderOnScroll() {
+    if (!header) return;
+
     if (window.scrollY > 50) {
-      header?.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+      header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+
+      // Al hacer scroll, el fondo es blanco → texto oscuro siempre
+      if (isDarkHero) {
+        header.querySelectorAll('.header-nav-link').forEach((el) => {
+          el.classList.remove('text-white/80', 'hover:text-white');
+          el.classList.add('text-gray-600', 'hover:text-gray-900');
+        });
+        const logoText = header.querySelector('.header-logo-text') as HTMLElement;
+        if (logoText) logoText.style.color = 'var(--color-primario)';
+        const menuBtn = header.querySelector('.header-menu-btn');
+        if (menuBtn) {
+          menuBtn.classList.remove('text-white', 'hover:bg-white/10');
+          menuBtn.classList.add('text-gray-600', 'hover:bg-gray-100');
+        }
+      }
     } else {
-      header?.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+      header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+
+      // Sin scroll → restaurar colores originales según plantilla
+      if (isDarkHero) {
+        header.querySelectorAll('.header-nav-link').forEach((el) => {
+          el.classList.add('text-white/80', 'hover:text-white');
+          el.classList.remove('text-gray-600', 'hover:text-gray-900');
+        });
+        const logoText = header.querySelector('.header-logo-text') as HTMLElement;
+        if (logoText) logoText.style.color = 'white';
+        const menuBtn = header.querySelector('.header-menu-btn');
+        if (menuBtn) {
+          menuBtn.classList.add('text-white', 'hover:bg-white/10');
+          menuBtn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+        }
+      }
     }
-  });
+  }
+
+  window.addEventListener('scroll', updateHeaderOnScroll);
 
   // Mobile menu toggle
   const menuBtn = document.getElementById('mobile-menu-btn');
