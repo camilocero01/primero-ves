@@ -4,10 +4,12 @@
  * Diseño sofisticado con tipografía serif y líneas limpias.
  * Ideal para médicos que buscan transmitir experiencia y confianza.
  */
-import { siteConfig } from '../../config/siteConfig';
+import type { DoctorConfig } from '../../config/siteConfig';
 import Icon from '../Icon.astro';
 
-const { doctor, contacto, cta, colores } = siteConfig;
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { doctor, contacto, cta, colores } = config;
 const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
 ---
 

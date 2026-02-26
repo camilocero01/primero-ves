@@ -1,0 +1,89 @@
+---
+/**
+ * RUTA DINÁMICA: /{doctor-slug}/{plantilla}
+ * Genera todas las combinaciones de doctor × plantilla en build time.
+ */
+import type { GetStaticPaths } from 'astro';
+import { doctores, plantillas, type DoctorConfig, type Plantilla } from '../../config/siteConfig';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+
+// Elegante
+import HeroElegante from '../../components/elegante/HeroElegante.astro';
+import ServiciosElegante from '../../components/elegante/ServiciosElegante.astro';
+import SobreMiElegante from '../../components/elegante/SobreMiElegante.astro';
+import TestimoniosElegante from '../../components/elegante/TestimoniosElegante.astro';
+import ContactoElegante from '../../components/elegante/ContactoElegante.astro';
+
+// Moderna
+import HeroModerna from '../../components/moderna/HeroModerna.astro';
+import ServiciosModerna from '../../components/moderna/ServiciosModerna.astro';
+import SobreMiModerna from '../../components/moderna/SobreMiModerna.astro';
+import TestimoniosModerna from '../../components/moderna/TestimoniosModerna.astro';
+import ContactoModerna from '../../components/moderna/ContactoModerna.astro';
+
+// Clásica
+import HeroClasica from '../../components/clasica/HeroClasica.astro';
+import ServiciosClasica from '../../components/clasica/ServiciosClasica.astro';
+import SobreMiClasica from '../../components/clasica/SobreMiClasica.astro';
+import TestimoniosClasica from '../../components/clasica/TestimoniosClasica.astro';
+import ContactoClasica from '../../components/clasica/ContactoClasica.astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const paths = [];
+  for (const doc of doctores) {
+    for (const plantilla of plantillas) {
+      paths.push({
+        params: { doctor: doc.slug, plantilla },
+        props: { config: doc, plantilla },
+      });
+    }
+  }
+  return paths;
+};
+
+interface Props {
+  config: DoctorConfig;
+  plantilla: Plantilla;
+}
+
+const { config, plantilla } = Astro.props;
+---
+
+<BaseLayout config={config}>
+  <Header config={config} slug={config.slug} plantilla={plantilla} />
+  <main>
+    {plantilla === 'elegante' && (
+      <>
+        <HeroElegante config={config} />
+        <ServiciosElegante config={config} />
+        <SobreMiElegante config={config} />
+        <TestimoniosElegante config={config} />
+        <ContactoElegante config={config} />
+      </>
+    )}
+    {plantilla === 'moderna' && (
+      <>
+        <HeroModerna config={config} />
+        <ServiciosModerna config={config} />
+        <SobreMiModerna config={config} />
+        <TestimoniosModerna config={config} />
+        <ContactoModerna config={config} />
+      </>
+    )}
+    {plantilla === 'clasica' && (
+      <>
+        <HeroClasica config={config} />
+        <ServiciosClasica config={config} />
+        <SobreMiClasica config={config} />
+        <TestimoniosClasica config={config} />
+        <ContactoClasica config={config} />
+      </>
+    )}
+  </main>
+  <Footer config={config} slug={config.slug} plantilla={plantilla} />
+  <WhatsAppFloat config={config} />
+</BaseLayout>

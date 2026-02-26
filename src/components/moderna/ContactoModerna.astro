@@ -1,8 +1,10 @@
 ---
-import { siteConfig } from '../../config/siteConfig';
+import type { DoctorConfig } from '../../config/siteConfig';
 import Icon from '../Icon.astro';
 
-const { contacto, horarios, cta } = siteConfig;
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { contacto, horarios, cta } = config;
 const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
 ---
 

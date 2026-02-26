@@ -1,10 +1,19 @@
 ---
-import { siteConfig } from '../config/siteConfig';
+import type { DoctorConfig, Plantilla } from '../config/siteConfig';
 import Icon from './Icon.astro';
 
-const { doctor, contacto, redesSociales, seo } = siteConfig;
+interface Props {
+  config: DoctorConfig;
+  slug: string;
+  plantilla: Plantilla;
+}
+
+const { config, slug, plantilla } = Astro.props;
+const { doctor, contacto, redesSociales, seo } = config;
 
 const socialLinks = Object.entries(redesSociales).filter(([_, url]) => url);
+
+const baseUrl = `/${slug}`;
 ---
 
 <footer class="text-white" style={`background-color: var(--color-primario)`}>
@@ -76,3 +85,89 @@ const socialLinks = Object.entries(redesSociales).filter(([_, url]) => url);
     </div>
   </div>
 </footer>
+
+<!-- Switcher flotante de plantillas -->
+<div id="template-switcher" class="fixed bottom-6 left-6 z-50">
+  <div class="relative">
+    <!-- Botón toggle -->
+    <button
+      id="switcher-btn"
+      class="flex items-center gap-2 px-4 py-3 bg-slate-900 text-white text-sm font-medium rounded-full shadow-lg border border-white/10 hover:bg-slate-800 transition-all duration-300 hover:shadow-xl"
+      aria-label="Cambiar plantilla"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Plantilla</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200" id="switcher-chevron"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+
+    <!-- Dropdown -->
+    <div id="switcher-dropdown" class="hidden absolute bottom-full left-0 mb-2 w-56 bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="p-2">
+        <p class="text-white/40 text-xs font-medium uppercase tracking-wider px-3 py-2">Cambiar plantilla</p>
+        
+        <a href={`${baseUrl}/elegante`} class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-colors group" data-template="elegante">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1B4D6E] to-[#1B4D6E]/70 flex items-center justify-center text-xs font-bold text-white shrink-0">E</span>
+          <div>
+            <p class="text-sm font-medium">Elegante</p>
+            <p class="text-xs text-white/40">Sofisticada y prestigiosa</p>
+          </div>
+        </a>
+
+        <a href={`${baseUrl}/moderna`} class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-colors group" data-template="moderna">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1B4D6E] to-[#0D2B3E] flex items-center justify-center text-xs font-bold text-white shrink-0">M</span>
+          <div>
+            <p class="text-sm font-medium">Moderna</p>
+            <p class="text-xs text-white/40">Audaz e impactante</p>
+          </div>
+        </a>
+
+        <a href={`${baseUrl}/clasica`} class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-colors group" data-template="clasica">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center text-xs font-bold text-gray-700 shrink-0">C</span>
+          <div>
+            <p class="text-sm font-medium">Clásica</p>
+            <p class="text-xs text-white/40">Sólida y tradicional</p>
+          </div>
+        </a>
+
+        <div class="border-t border-white/5 mt-1 pt-1">
+          <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/50 hover:bg-white/10 hover:text-white transition-colors text-sm">
+            <span class="w-8 h-8 rounded-lg bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </span>
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Template switcher toggle
+  const btn = document.getElementById('switcher-btn');
+  const dropdown = document.getElementById('switcher-dropdown');
+  const chevron = document.getElementById('switcher-chevron');
+
+  btn?.addEventListener('click', () => {
+    dropdown?.classList.toggle('hidden');
+    chevron?.classList.toggle('rotate-180');
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('template-switcher')?.contains(e.target as Node)) {
+      dropdown?.classList.add('hidden');
+      chevron?.classList.remove('rotate-180');
+    }
+  });
+
+  // Highlight current template
+  const currentPath = window.location.pathname.replace(/\/$/, '').split('/').pop();
+  const activeLink = document.querySelector(`[data-template="${currentPath}"]`);
+  if (activeLink) {
+    activeLink.classList.add('bg-white/10');
+    const dot = document.createElement('span');
+    dot.className = 'w-1.5 h-1.5 rounded-full bg-green-400 ml-auto shrink-0';
+    activeLink.appendChild(dot);
+  }
+</script>

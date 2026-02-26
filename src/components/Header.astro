@@ -1,8 +1,15 @@
 ---
-import { siteConfig } from '../config/siteConfig';
+import type { DoctorConfig, Plantilla } from '../config/siteConfig';
 import Icon from './Icon.astro';
 
-const { doctor, logo, contacto, cta } = siteConfig;
+interface Props {
+  config: DoctorConfig;
+  slug: string;
+  plantilla: Plantilla;
+}
+
+const { config, slug, plantilla } = Astro.props;
+const { doctor, logo, contacto, cta } = config;
 const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
 
 const navItems = [

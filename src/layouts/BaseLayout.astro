@@ -1,69 +1,29 @@
 ---
 import '../styles/global.css';
-import { siteConfig } from '../config/siteConfig';
+import type { DoctorConfig } from '../config/siteConfig';
 
 interface Props {
+  config?: DoctorConfig;
   title?: string;
   description?: string;
 }
 
-const {
-  title = siteConfig.seo.title,
-  description = siteConfig.seo.description,
-} = Astro.props;
+const { config, title: titleProp, description: descProp } = Astro.props;
 
-const {
-  seo,
-  doctor,
-  colores,
-  contacto,
-  horarios,
-  servicios,
-} = siteConfig;
+// Si no hay config (ej: página index), usar defaults
+const title = titleProp ?? config?.seo.title ?? 'PrimeroVes';
+const description = descProp ?? config?.seo.description ?? '';
 
-// Structured Data - Schema.org para médicos
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': seo.structuredData.type,
-  name: `${doctor.titulo} ${doctor.nombre}`,
-  description: seo.description,
-  image: doctor.foto,
-  telephone: contacto.telefono,
-  email: contacto.email,
-  url: seo.canonical,
-  priceRange: seo.structuredData.priceRange,
-  medicalSpecialty: seo.structuredData.medicalSpecialty,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: contacto.direccion,
-    addressLocality: contacto.ciudad,
-    addressRegion: contacto.estado,
-    addressCountry: contacto.pais,
-    postalCode: contacto.codigoPostal,
-  },
-  openingHoursSpecification: horarios.map((h) => ({
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: h.dias,
-    opens: h.horas.split(' - ')[0],
-    closes: h.horas.split(' - ')[1],
-  })),
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Servicios Médicos',
-    itemListElement: servicios.map((s) => ({
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'MedicalProcedure',
-        name: s.nombre,
-        description: s.descripcion,
-      },
-    })),
-  },
-};
+const seo = config?.seo;
+const doctor = config?.doctor;
+const colores = config?.colores ?? { primario: '#1B4D6E', secundario: '#C9A96E' };
+const contacto = config?.contacto;
+const horarios = config?.horarios ?? [];
+const servicios = config?.servicios ?? [];
 ---
 
 <!doctype html>
-<html lang={seo.locale.replace('_', '-')} class="scroll-smooth">
+<html lang={seo?.locale?.replace('_', '-') ?? 'es'} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -71,28 +31,28 @@ const structuredData = {
     <!-- SEO Básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={seo.keywords.join(', ')} />
-    <link rel="canonical" href={seo.canonical} />
+    {seo && <meta name="keywords" content={seo.keywords.join(', ')} />}
+    {seo && <link rel="canonical" href={seo.canonical} />}
     <meta name="robots" content="index, follow" />
-    <meta name="author" content={`${doctor.titulo} ${doctor.nombre}`} />
+    {doctor && <meta name="author" content={`${doctor.titulo} ${doctor.nombre}`} />}
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={seo.canonical} />
+    {seo && <meta property="og:url" content={seo.canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={seo.ogImage} />
-    <meta property="og:locale" content={seo.locale} />
-    <meta property="og:site_name" content={seo.siteName} />
+    {seo && <meta property="og:image" content={seo.ogImage} />}
+    {seo && <meta property="og:locale" content={seo.locale} />}
+    {seo && <meta property="og:site_name" content={seo.siteName} />}
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={seo.ogImage} />
+    {seo && <meta name="twitter:image" content={seo.ogImage} />}
     
     <!-- Google Verification -->
-    {seo.googleVerification && (
+    {seo?.googleVerification && (
       <meta name="google-site-verification" content={seo.googleVerification} />
     )}
     
@@ -111,7 +71,46 @@ const structuredData = {
     />
 
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    {config && seo && doctor && contacto && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': seo.structuredData.type,
+        name: `${doctor.titulo} ${doctor.nombre}`,
+        description: seo.description,
+        image: doctor.foto,
+        telephone: contacto.telefono,
+        email: contacto.email,
+        url: seo.canonical,
+        priceRange: seo.structuredData.priceRange,
+        medicalSpecialty: seo.structuredData.medicalSpecialty,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: contacto.direccion,
+          addressLocality: contacto.ciudad,
+          addressRegion: contacto.estado,
+          addressCountry: contacto.pais,
+          postalCode: contacto.codigoPostal,
+        },
+        openingHoursSpecification: horarios.map((h) => ({
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: h.dias,
+          opens: h.horas.split(' - ')[0],
+          closes: h.horas.split(' - ')[1],
+        })),
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Servicios Médicos',
+          itemListElement: servicios.map((s) => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'MedicalProcedure',
+              name: s.nombre,
+              description: s.descripcion,
+            },
+          })),
+        },
+      })} />
+    )}
 
     <!-- Colores dinámicos -->
     <style define:vars={{

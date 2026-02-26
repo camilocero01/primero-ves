@@ -3,10 +3,12 @@
  * PLANTILLA MODERNA - Hero Section
  * Diseño bold con colores vibrantes, asimétrico, con mucho impacto visual.
  */
-import { siteConfig } from '../../config/siteConfig';
+import type { DoctorConfig } from '../../config/siteConfig';
 import Icon from '../Icon.astro';
 
-const { doctor, contacto, cta } = siteConfig;
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { doctor, contacto, cta } = config;
 const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
 ---
 

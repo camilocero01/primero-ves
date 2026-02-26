@@ -1,8 +1,10 @@
 ---
-import { siteConfig } from '../../config/siteConfig';
+import type { DoctorConfig } from '../../config/siteConfig';
 import Icon from '../Icon.astro';
 
-const { servicios } = siteConfig;
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { servicios } = config;
 ---
 
 <section id="servicios" class="py-24 bg-white">
