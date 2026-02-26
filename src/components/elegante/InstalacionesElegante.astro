@@ -1,0 +1,60 @@
+---
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="instalaciones" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-sm font-semibold tracking-widest uppercase" style={`color: var(--color-secundario)`}>
+        Conozca Nuestro Espacio
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-3 mb-6" style={`color: var(--color-primario)`}>
+        Nuestras Instalaciones
+      </h2>
+      <p class="text-gray-600 text-lg">
+        Un espacio diseñado para su comodidad y bienestar, equipado con tecnología de última generación.
+      </p>
+    </div>
+
+    <!-- Layout: imagen principal + grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Imagen principal del consultorio -->
+      <div class="relative rounded-2xl overflow-hidden shadow-lg group">
+        <img
+          src={imagenes.consultorio}
+          alt={`Consultorio de ${doctor.nombre}`}
+          class="w-full h-full object-cover min-h-[400px] transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <p class="text-white font-semibold text-lg">Consultorio Principal</p>
+          <p class="text-white/80 text-sm">{config.contacto.direccion}, {config.contacto.ciudad}</p>
+        </div>
+      </div>
+
+      <!-- Grid de instalaciones -->
+      <div class="grid grid-cols-2 gap-4">
+        {imagenes.instalaciones.map((img) => (
+          <div class="relative rounded-xl overflow-hidden shadow-md group aspect-square">
+            <img
+              src={img.url}
+              alt={img.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white text-sm font-medium">{img.alt}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

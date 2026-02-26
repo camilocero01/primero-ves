@@ -8,11 +8,16 @@ import Icon from '../Icon.astro';
 
 interface Props { config: DoctorConfig; }
 const { config } = Astro.props;
-const { doctor, contacto, cta } = config;
+const { doctor, contacto, cta, imagenes } = config;
 const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
 ---
 
-<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden" style={`background-color: var(--color-primario)`}>
+<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- Fondo con imagen de especialidad -->
+  <div class="absolute inset-0">
+    <img src={imagenes.heroFondo} alt="" class="w-full h-full object-cover" loading="eager" />
+    <div class="absolute inset-0" style={`background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario)/90 50%, var(--color-primario)/70 100%);`}></div>
+  </div>
   <!-- Patrón de fondo -->
   <div class="absolute inset-0 opacity-10">
     <div class="absolute top-0 left-0 w-full h-full" 

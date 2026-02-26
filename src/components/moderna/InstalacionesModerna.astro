@@ -1,0 +1,59 @@
+---
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="instalaciones" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4" style={`color: var(--color-primario)`}>
+        Instalaciones
+      </h2>
+      <div class="w-20 h-1 mx-auto rounded-full mb-6" style={`background-color: var(--color-secundario)`}></div>
+      <p class="text-gray-600 text-lg">
+        Espacios modernos diseñados para brindarle la mejor experiencia.
+      </p>
+    </div>
+
+    <!-- Bento grid moderno -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+      <!-- Imagen principal del consultorio - ocupa 2 columnas y 2 filas -->
+      <div class="col-span-2 row-span-2 relative rounded-3xl overflow-hidden group">
+        <img
+          src={imagenes.consultorio}
+          alt={`Consultorio de ${doctor.nombre}`}
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white mb-2" style={`background-color: var(--color-secundario)`}>
+            Consultorio
+          </span>
+          <p class="text-white font-bold text-xl">{config.contacto.direccion}</p>
+          <p class="text-white/70 text-sm">{config.contacto.ciudad}, {config.contacto.estado}</p>
+        </div>
+      </div>
+
+      <!-- Imágenes de instalaciones -->
+      {imagenes.instalaciones.map((img, index) => (
+        <div class={`relative rounded-3xl overflow-hidden group ${index === 0 ? 'col-span-2' : ''}`}>
+          <img
+            src={img.url}
+            alt={img.alt}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <p class="text-white text-sm font-semibold">{img.alt}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="galeria" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-sm font-semibold tracking-widest uppercase" style={`color: var(--color-secundario)`}>
+        Nuestra Especialidad
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-3 mb-6" style={`color: var(--color-primario)`}>
+        {doctor.especialidad}
+      </h2>
+      <p class="text-gray-600 text-lg">
+        Procedimientos y tecnología de vanguardia al servicio de su salud y bienestar.
+      </p>
+    </div>
+
+    <!-- Galería con hover elegante -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {imagenes.galeria.map((img) => (
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-[4/5]">
+          <img
+            src={img.url}
+            alt={img.alt}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+          />
+          <!-- Overlay gradiente -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <!-- Texto -->
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+            <div class="w-10 h-0.5 mb-3" style={`background-color: var(--color-secundario)`}></div>
+            <p class="text-white font-semibold text-lg">{img.alt}</p>
+          </div>
+          <!-- Borde decorativo -->
+          <div class="absolute inset-0 border-2 border-transparent group-hover:border-white/30 rounded-2xl transition-colors duration-500 m-3"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

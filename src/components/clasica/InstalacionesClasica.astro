@@ -1,0 +1,75 @@
+---
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="instalaciones" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado clásico con líneas decorativas -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <div class="w-16 h-1 mx-auto mb-6" style={`background-color: var(--color-secundario)`}></div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style={`color: var(--color-primario)`}>
+        Nuestras Instalaciones
+      </h2>
+      <p class="text-gray-600 text-lg">
+        Un entorno profesional y acogedor, equipado para ofrecerle atención de la más alta calidad.
+      </p>
+      <div class="w-16 h-1 mx-auto mt-6" style={`background-color: var(--color-secundario)`}></div>
+    </div>
+
+    <!-- Consultorio principal -->
+    <div class="relative mb-12 border border-gray-100 overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-5">
+        <div class="lg:col-span-3">
+          <img
+            src={imagenes.consultorio}
+            alt={`Consultorio de ${doctor.nombre}`}
+            class="w-full h-full object-cover min-h-[350px]"
+            loading="lazy"
+          />
+        </div>
+        <div class="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-center bg-gray-50">
+          <div class="w-10 h-1 mb-6" style={`background-color: var(--color-secundario)`}></div>
+          <h3 class="text-2xl font-bold mb-4" style={`color: var(--color-primario)`}>
+            Consultorio Principal
+          </h3>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Ubicado en {config.contacto.direccion}, {config.contacto.ciudad}. 
+            Nuestro consultorio cuenta con tecnología de punta y un ambiente diseñado para su tranquilidad.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-gray-500">
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {config.contacto.ciudad}, {config.contacto.estado}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid de instalaciones -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {imagenes.instalaciones.map((img) => (
+        <div class="group border border-gray-100 overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img
+              src={img.url}
+              alt={img.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4 bg-white">
+            <p class="text-sm font-medium text-gray-700">{img.alt}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

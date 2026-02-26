@@ -14,21 +14,27 @@ import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
 // Elegante
 import HeroElegante from '../../components/elegante/HeroElegante.astro';
 import ServiciosElegante from '../../components/elegante/ServiciosElegante.astro';
+import GaleriaElegante from '../../components/elegante/GaleriaElegante.astro';
 import SobreMiElegante from '../../components/elegante/SobreMiElegante.astro';
+import InstalacionesElegante from '../../components/elegante/InstalacionesElegante.astro';
 import TestimoniosElegante from '../../components/elegante/TestimoniosElegante.astro';
 import ContactoElegante from '../../components/elegante/ContactoElegante.astro';
 
 // Moderna
 import HeroModerna from '../../components/moderna/HeroModerna.astro';
 import ServiciosModerna from '../../components/moderna/ServiciosModerna.astro';
+import GaleriaModerna from '../../components/moderna/GaleriaModerna.astro';
 import SobreMiModerna from '../../components/moderna/SobreMiModerna.astro';
+import InstalacionesModerna from '../../components/moderna/InstalacionesModerna.astro';
 import TestimoniosModerna from '../../components/moderna/TestimoniosModerna.astro';
 import ContactoModerna from '../../components/moderna/ContactoModerna.astro';
 
 // Clásica
 import HeroClasica from '../../components/clasica/HeroClasica.astro';
 import ServiciosClasica from '../../components/clasica/ServiciosClasica.astro';
+import GaleriaClasica from '../../components/clasica/GaleriaClasica.astro';
 import SobreMiClasica from '../../components/clasica/SobreMiClasica.astro';
+import InstalacionesClasica from '../../components/clasica/InstalacionesClasica.astro';
 import TestimoniosClasica from '../../components/clasica/TestimoniosClasica.astro';
 import ContactoClasica from '../../components/clasica/ContactoClasica.astro';
 
@@ -60,7 +66,9 @@ const { config, plantilla } = Astro.props;
       <>
         <HeroElegante config={config} />
         <ServiciosElegante config={config} />
+        <GaleriaElegante config={config} />
         <SobreMiElegante config={config} />
+        <InstalacionesElegante config={config} />
         <TestimoniosElegante config={config} />
         <ContactoElegante config={config} />
       </>
@@ -69,7 +77,9 @@ const { config, plantilla } = Astro.props;
       <>
         <HeroModerna config={config} />
         <ServiciosModerna config={config} />
+        <GaleriaModerna config={config} />
         <SobreMiModerna config={config} />
+        <InstalacionesModerna config={config} />
         <TestimoniosModerna config={config} />
         <ContactoModerna config={config} />
       </>
@@ -78,7 +88,9 @@ const { config, plantilla } = Astro.props;
       <>
         <HeroClasica config={config} />
         <ServiciosClasica config={config} />
+        <GaleriaClasica config={config} />
         <SobreMiClasica config={config} />
+        <InstalacionesClasica config={config} />
         <TestimoniosClasica config={config} />
         <ContactoClasica config={config} />
       </>

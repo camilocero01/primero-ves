@@ -101,6 +101,24 @@ export interface DoctorConfig {
     texto: string;
     calificacion: number;
   }>;
+
+  // --- IMÁGENES ---
+  imagenes: {
+    /** Imagen de fondo del hero, alusiva a la especialidad (1920×1080px, .webp) */
+    heroFondo: string;
+    /** Imagen principal del consultorio / clínica (800×600px, .webp) */
+    consultorio: string;
+    /** Galería de instalaciones: sala de espera, equipos, fachada, etc. */
+    instalaciones: Array<{
+      url: string;
+      alt: string;
+    }>;
+    /** Imágenes alusivas a la especialidad: procedimientos, tecnología, etc. */
+    galeria: Array<{
+      url: string;
+      alt: string;
+    }>;
+  };
 }
 
 // ============================================================
@@ -216,6 +234,22 @@ export const doctores: DoctorConfig[] = [
       { nombre: 'Roberto S.', texto: 'Lo recomiendo ampliamente. Después de visitar varios cardiólogos, el Dr. Mendoza fue quien realmente me dio un diagnóstico acertado.', calificacion: 5 },
       { nombre: 'Ana L.', texto: 'Atención de primera, instalaciones impecables y el doctor es muy atento. Sin duda el mejor cardiólogo de Bogotá.', calificacion: 5 },
     ],
+
+    imagenes: {
+      heroFondo: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&q=80',
+      consultorio: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80',
+      instalaciones: [
+        { url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80', alt: 'Sala de espera moderna y confortable' },
+        { url: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600&q=80', alt: 'Consultorio equipado con tecnología de punta' },
+        { url: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&q=80', alt: 'Área de procedimientos cardíacos' },
+        { url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80', alt: 'Recepción y área administrativa' },
+      ],
+      galeria: [
+        { url: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=600&q=80', alt: 'Ecocardiograma en tiempo real' },
+        { url: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&q=80', alt: 'Monitoreo cardíaco avanzado' },
+        { url: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=80', alt: 'Equipo de cateterismo cardíaco' },
+      ],
+    },
   },
 
   // ──────────────────────────────────────
@@ -303,6 +337,22 @@ export const doctores: DoctorConfig[] = [
       { nombre: 'Carmen R.', texto: 'Me sentí súper segura desde la primera consulta. Me explicó todo el procedimiento con paciencia y los resultados superaron mis expectativas.', calificacion: 5 },
       { nombre: 'Diana P.', texto: 'Viajé desde Bogotá para operarme con ella y valió totalmente la pena. Su clínica es impecable y la atención es de primer nivel.', calificacion: 5 },
     ],
+
+    imagenes: {
+      heroFondo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1920&q=80',
+      consultorio: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80',
+      instalaciones: [
+        { url: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=600&q=80', alt: 'Sala de consulta estética moderna' },
+        { url: 'https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=600&q=80', alt: 'Quirófano equipado para cirugía plástica' },
+        { url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80', alt: 'Sala de espera elegante y acogedora' },
+        { url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80', alt: 'Área de recuperación post-operatoria' },
+      ],
+      galeria: [
+        { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80', alt: 'Procedimiento estético facial' },
+        { url: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80', alt: 'Tecnología láser de última generación' },
+        { url: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80', alt: 'Consulta de valoración personalizada' },
+      ],
+    },
   },
 
   // ──────────────────────────────────────
@@ -390,6 +440,22 @@ export const doctores: DoctorConfig[] = [
       { nombre: 'Patricia V.', texto: 'Llevé a mi mamá para implantes dentales. El Dr. Ruiz fue muy claro, le explicó todo y el resultado quedó perfecto. Muy agradecida.', calificacion: 5 },
       { nombre: 'Miguel Á.', texto: 'El mejor odontólogo que he visitado en Cali. Después de las carillas me siento como otra persona. Súper profesional y cálido.', calificacion: 5 },
     ],
+
+    imagenes: {
+      heroFondo: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1920&q=80',
+      consultorio: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80',
+      instalaciones: [
+        { url: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80', alt: 'Consultorio odontológico moderno' },
+        { url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80', alt: 'Sala de espera cómoda y luminosa' },
+        { url: 'https://images.unsplash.com/photo-1516841273335-e39b37888115?w=600&q=80', alt: 'Equipos de radiología dental digital' },
+        { url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80', alt: 'Recepción y área de atención al paciente' },
+      ],
+      galeria: [
+        { url: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80', alt: 'Diseño de sonrisa digital' },
+        { url: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80', alt: 'Procedimiento de blanqueamiento dental' },
+        { url: 'https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=600&q=80', alt: 'Tecnología CAD/CAM para carillas' },
+      ],
+    },
   },
 ];
 

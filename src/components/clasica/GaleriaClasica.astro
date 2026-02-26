@@ -1,0 +1,46 @@
+---
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="galeria" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado clásico -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <div class="w-16 h-1 mx-auto mb-6" style={`background-color: var(--color-secundario)`}></div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style={`color: var(--color-primario)`}>
+        {doctor.especialidad}
+      </h2>
+      <p class="text-gray-600 text-lg">
+        Conozca los procedimientos y la tecnología que utilizamos para cuidar de su salud.
+      </p>
+      <div class="w-16 h-1 mx-auto mt-6" style={`background-color: var(--color-secundario)`}></div>
+    </div>
+
+    <!-- Galería con marcos clásicos -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {imagenes.galeria.map((img) => (
+        <div class="group bg-white border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src={img.url}
+              alt={img.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <!-- Caption -->
+          <div class="p-5 border-t border-gray-100">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-0.5 shrink-0" style={`background-color: var(--color-secundario)`}></div>
+              <p class="text-gray-700 font-medium">{img.alt}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
