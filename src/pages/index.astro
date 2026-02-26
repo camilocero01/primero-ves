@@ -201,13 +201,13 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
   </div>
 
   <!-- Script: leer ?doctor= y mostrar solo esa sección -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  <script is:inline>
+    (function () {
       const params = new URLSearchParams(window.location.search);
       const doctorSlug = params.get('doctor');
 
       if (doctorSlug) {
-        const target = document.querySelector(`.doctor-section[data-slug="${doctorSlug}"]`);
+        const target = document.querySelector('.doctor-section[data-slug="' + doctorSlug + '"]');
         if (target) {
           // Ocultar vista genérica
           const generic = document.getElementById('generic-view');
@@ -217,6 +217,6 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
           target.classList.remove('hidden');
         }
       }
-    });
+    })();
   </script>
 </BaseLayout>

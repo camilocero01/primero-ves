@@ -24,4 +24,21 @@ Todas las plantillas son 100% personalizables: colores, textos, servicios, horar
 Datos de ejemplo. No representan a un médico real.
 </p> </div> </main> <!-- Footer --> <footer class="border-t border-white/5 py-8 text-center"> <p class="text-white/20 text-sm">
 &copy; 2026 PrimeroVes. Todos los derechos reservados.
-</p> </footer> </div>  <script type="module">document.addEventListener("DOMContentLoaded",()=>{const e=new URLSearchParams(window.location.search).get("doctor");if(e){const t=document.querySelector(`.doctor-section[data-slug="${e}"]`);if(t){const o=document.getElementById("generic-view");o&&(o.style.display="none"),t.classList.remove("hidden")}}});</script>  </body></html>
+</p> </footer> </div>  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const doctorSlug = params.get('doctor');
+
+      if (doctorSlug) {
+        const target = document.querySelector('.doctor-section[data-slug="' + doctorSlug + '"]');
+        if (target) {
+          // Ocultar vista genérica
+          const generic = document.getElementById('generic-view');
+          if (generic) generic.style.display = 'none';
+
+          // Mostrar solo el doctor solicitado
+          target.classList.remove('hidden');
+        }
+      }
+    })();
+  </script>  </body></html>
