@@ -43,7 +43,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
       <!-- Vista doctor específico (oculta por defecto, JS la muestra si hay ?doctor=) -->
       {doctores.map((doc) => (
-        <div class="doctor-section hidden" data-slug={doc.slug}>
+        <div class="doctor-section" style="display:none" data-slug={doc.slug}>
           <!-- Saludo personalizado -->
           <div class="text-center mb-12">
             <div class="inline-flex items-center gap-4 mb-6">
@@ -203,18 +203,18 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
   <!-- Script: leer ?doctor= y mostrar solo esa sección -->
   <script is:inline>
     (function () {
-      const params = new URLSearchParams(window.location.search);
-      const doctorSlug = params.get('doctor');
+      var params = new URLSearchParams(window.location.search);
+      var doctorSlug = params.get('doctor');
 
       if (doctorSlug) {
-        const target = document.querySelector('.doctor-section[data-slug="' + doctorSlug + '"]');
+        var target = document.querySelector('.doctor-section[data-slug="' + doctorSlug + '"]');
         if (target) {
           // Ocultar vista genérica
-          const generic = document.getElementById('generic-view');
+          var generic = document.getElementById('generic-view');
           if (generic) generic.style.display = 'none';
 
           // Mostrar solo el doctor solicitado
-          target.classList.remove('hidden');
+          target.style.display = 'block';
         }
       }
     })();
