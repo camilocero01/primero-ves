@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none">
-  <rect width="600" height="800" fill="#E5E7EB"/>
-  <circle cx="300" cy="280" r="80" fill="#9CA3AF"/>
-  <path d="M180 500 C180 420 420 420 420 500 L420 600 L180 600Z" fill="#9CA3AF"/>
-  <text x="300" y="700" text-anchor="middle" fill="#6B7280" font-family="sans-serif" font-size="18">Foto del Doctor</text>
-</svg>
