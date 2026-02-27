@@ -137,7 +137,7 @@ export const doctores: DoctorConfig[] = [
       especialidad: 'Cardiología',
       subespecialidad: 'Hemodinámica e Intervencionismo',
       cedulaProfesional: 'RM-12345',
-      foto: '/images/photo/dr-carlos-mendoza.webp',
+      foto: '/images/photo/dr-carlos-mendoza.PNG',
       frase: 'Tu corazón en las mejores manos',
       biografia:
         'Con más de 15 años de experiencia en cardiología intervencionista, me dedico a brindar atención de la más alta calidad. Egresado de la Universidad Nacional de Colombia, con subespecialidad en hemodinámica en la Fundación Cardioinfantil y múltiples certificaciones internacionales.',
@@ -236,7 +236,7 @@ export const doctores: DoctorConfig[] = [
     ],
 
     imagenes: {
-      heroFondo: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&q=80',
+      heroFondo: '\\images\\users\\1\\dr-carlos-mendoza-herofondo-v2.webp',
       consultorio: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80',
       instalaciones: [
         { url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80', alt: 'Sala de espera moderna y confortable' },
@@ -264,7 +264,7 @@ export const doctores: DoctorConfig[] = [
       especialidad: 'Cirugía Plástica',
       subespecialidad: 'Cirugía Estética y Reconstructiva',
       cedulaProfesional: 'RM-87654',
-      foto: '/images/photo/dra-sofia-herrera.webp',
+      foto: '/images/photo/dra-sofia-herrera.PNG',
       frase: 'Realza tu belleza natural con seguridad',
       biografia:
         'Cirujana plástica certificada con más de 12 años de experiencia. Especialista en procedimientos estéticos faciales y corporales con técnicas mínimamente invasivas. Egresada de la Universidad de Antioquia con fellowship en cirugía estética en São Paulo, Brasil. Miembro de la Sociedad Colombiana de Cirugía Plástica (SCCP).',
@@ -339,7 +339,7 @@ export const doctores: DoctorConfig[] = [
     ],
 
     imagenes: {
-      heroFondo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1920&q=80',
+      heroFondo: '\\images\\users\\1\\dra-sofia-herrera-herofondo.webp',
       consultorio: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80',
       instalaciones: [
         { url: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=600&q=80', alt: 'Sala de consulta estética moderna' },
@@ -367,7 +367,7 @@ export const doctores: DoctorConfig[] = [
       especialidad: 'Odontología Estética',
       subespecialidad: 'Diseño de Sonrisa y Rehabilitación Oral',
       cedulaProfesional: 'RM-11223',
-      foto: '/images/photo/dr-alejandro-ruiz.webp',
+      foto: '/images/photo/dr-alejandro-ruiz.PNG',
       frase: 'Diseñamos la sonrisa que siempre soñaste',
       biografia:
         'Odontólogo estético con 18 años de experiencia. Especialista en diseño de sonrisa, carillas en porcelana e implantología dental. Egresado de la Universidad del Valle con posgrado en rehabilitación oral en la Universidad CES de Medellín. Miembro de la Federación Odontológica Colombiana.',
