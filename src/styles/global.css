@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 /* ========================================
-   PRIMEROVES - Estilos Globales
+   PRIMEROVES - Obsidian Luxe Theme
+   Dark premium with violet/purple accents
    ======================================== */
 
 @theme {
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   --color-primary: var(--color-primario, #1B4D6E);
@@ -28,6 +29,14 @@
   animation: slideLeft 0.6s ease-out forwards;
 }
 
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@utility animate-pulse-slow {
+  animation: pulseSlow 4s ease-in-out infinite;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -43,6 +52,16 @@
   to { opacity: 1; transform: translateX(0); }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
 /* Scroll suave en toda la página */
 html {
   scroll-behavior: smooth;
@@ -51,9 +70,119 @@ html {
 /* Estilos base del body */
 body {
   font-family: var(--font-body);
+  background-color: #0a0a0a;
 }
 
-/* Encabezados con fuente serif elegante */
+/* Encabezados con fuente moderna */
 h1, h2, h3 {
   font-family: var(--font-heading);
+}
+
+/* ═══════════════════════════════════════════
+   OBSIDIAN LUXE - Componentes Premium
+   ═══════════════════════════════════════════ */
+
+/* Botón principal con gradiente violeta */
+.btn-obsidian {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #d946ef 100%);
+  color: white;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+}
+
+.btn-obsidian:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.2);
+}
+
+/* Botón outline premium */
+.btn-obsidian-outline {
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.btn-obsidian-outline:hover {
+  border-color: rgba(139, 92, 246, 0.8);
+  background: rgba(139, 92, 246, 0.1);
+  color: white;
+}
+
+/* Cards con glass morphism */
+.card-obsidian {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
+.card-obsidian:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 8px 40px rgba(139, 92, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Badge premium */
+.badge-obsidian {
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #a78bfa;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+}
+
+/* Orbes decorativos */
+.orb-violet {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.orb-fuchsia {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-cyan {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* Gradiente de texto */
+.text-gradient-obsidian {
+  background: linear-gradient(135deg, #a78bfa 0%, #f0abfc 50%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Glow effect */
+.glow-violet {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
 }

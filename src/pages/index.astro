@@ -22,31 +22,38 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
   title="PrimeroVes | Tu sitio web médico, primero lo ves, luego decides"
   description="Diseñamos sitios web profesionales para médicos especialistas. Primero ves tu sitio terminado, luego decides si lo quieres. Sin riesgo."
 >
-  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+  <div class="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
+    <!-- Decorative orbs -->
+    <div class="orb-violet w-[600px] h-[600px] -top-40 -left-40 animate-pulse-slow"></div>
+    <div class="orb-fuchsia w-[800px] h-[800px] top-1/4 -right-60 animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="orb-cyan w-[500px] h-[500px] bottom-1/4 left-1/4 animate-pulse-slow" style="animation-delay: 4s;"></div>
+    
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 grid-pattern pointer-events-none"></div>
 
     <!-- ═══════ NAVBAR ═══════ -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900/0">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 md:h-20">
           <!-- Logo -->
           <a href="#" class="flex items-center gap-2.5 group shrink-0">
-            <div class="w-9 h-9 rounded-lg bg-amber-400 flex items-center justify-center">
-              <span class="text-slate-900 font-bold text-lg font-heading leading-none">P</span>
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/30">
+              <span class="text-white font-bold text-lg leading-none">P</span>
             </div>
             <span class="text-xl font-bold text-white tracking-tight">
-              Primero<span class="text-amber-400">Ves</span>
+              Primero<span class="text-gradient-obsidian">Ves</span>
             </span>
           </a>
 
           <!-- Links desktop -->
           <div class="hidden md:flex items-center gap-8">
-            <a href="#como-funciona" class="text-white/60 hover:text-white text-sm font-medium transition-colors">Cómo funciona</a>
-            <a href="#comparativo" class="text-white/60 hover:text-white text-sm font-medium transition-colors">Comparativo</a>
-            <a href="#precio" class="text-white/60 hover:text-white text-sm font-medium transition-colors">Precio</a>
-            <a href="#servicios-adicionales" class="text-white/60 hover:text-white text-sm font-medium transition-colors">Servicios</a>
+            <a href="#como-funciona" class="text-violet-200/70 hover:text-white text-sm font-medium transition-colors">Cómo funciona</a>
+            <a href="#comparativo" class="text-violet-200/70 hover:text-white text-sm font-medium transition-colors">Comparativo</a>
+            <a href="#precio" class="text-violet-200/70 hover:text-white text-sm font-medium transition-colors">Precio</a>
+            <a href="#servicios-adicionales" class="text-violet-200/70 hover:text-white text-sm font-medium transition-colors">Servicios</a>
             <a href="https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20un%20sitio%20web%20para%20mi%20consultorio" 
                target="_blank"
-               class="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-slate-900 font-semibold px-5 py-2.5 rounded-full text-sm transition-all duration-300 hover:shadow-lg hover:shadow-amber-400/20">
+               class="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-all duration-300 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
               Contáctanos
             </a>
@@ -65,15 +72,15 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
       <!-- Mobile menu -->
       <div id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300" style="max-height: 0; opacity: 0;">
-        <div class="px-4 pb-6 pt-2 space-y-1 bg-slate-900/95 backdrop-blur-lg border-t border-white/5">
-          <a href="#como-funciona" class="mobile-link block px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium transition-colors">Cómo funciona</a>
-          <a href="#comparativo" class="mobile-link block px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium transition-colors">Comparativo</a>
-          <a href="#precio" class="mobile-link block px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium transition-colors">Precio</a>
-          <a href="#servicios-adicionales" class="mobile-link block px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium transition-colors">Servicios</a>
+        <div class="px-4 pb-6 pt-2 space-y-1 bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/5">
+          <a href="#como-funciona" class="mobile-link block px-4 py-3 text-violet-200/60 hover:text-white hover:bg-violet-500/10 rounded-lg text-sm font-medium transition-colors">Cómo funciona</a>
+          <a href="#comparativo" class="mobile-link block px-4 py-3 text-violet-200/60 hover:text-white hover:bg-violet-500/10 rounded-lg text-sm font-medium transition-colors">Comparativo</a>
+          <a href="#precio" class="mobile-link block px-4 py-3 text-violet-200/60 hover:text-white hover:bg-violet-500/10 rounded-lg text-sm font-medium transition-colors">Precio</a>
+          <a href="#servicios-adicionales" class="mobile-link block px-4 py-3 text-violet-200/60 hover:text-white hover:bg-violet-500/10 rounded-lg text-sm font-medium transition-colors">Servicios</a>
           <div class="pt-3">
             <a href="https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20un%20sitio%20web%20para%20mi%20consultorio" 
                target="_blank"
-               class="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-500 text-slate-900 font-semibold px-5 py-3 rounded-full text-sm transition-all duration-300">
+               class="flex items-center justify-center gap-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-semibold px-5 py-3 rounded-full text-sm transition-all duration-300 shadow-lg shadow-violet-500/25">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
               Contáctanos
             </a>
@@ -83,56 +90,118 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
     </nav>
 
     <!-- ═══════ HERO ═══════ -->
-    <header class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-20 text-center">
-      <!-- Decorative blobs -->
-      <div class="absolute top-20 left-1/4 w-72 h-72 bg-amber-400/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl pointer-events-none"></div>
+    <header class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-20">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left: Text content -->
+        <div class="text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 rounded-full text-sm mb-8 border border-violet-500/20 backdrop-blur-sm">
+            <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+            <span class="text-violet-300">Diseño web para médicos especialistas</span>
+          </div>
 
-      <div class="relative">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm mb-8 border border-white/10 backdrop-blur-sm">
-          <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-          <span class="text-white/80">Diseño web para médicos especialistas xxx</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Tu sitio web médico.<br>
+            <span class="text-gradient-obsidian">Primero lo ves.</span>
+          </h1>
+          
+          <p class="text-lg md:text-xl text-violet-200/70 max-w-xl mx-auto lg:mx-0 mb-4 font-light">
+            Diseñamos tu sitio web profesional con tu información real.
+          </p>
+          <p class="text-base text-violet-200/70 max-w-lg mx-auto lg:mx-0 mb-10">
+            Lo ves terminado. Si te gusta, lo activas. Si no, no pagas nada.
+          </p>
+
+          <!-- CTA buttons -->
+          <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
+            <a href="https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20un%20sitio%20web%20para%20mi%20consultorio" 
+               target="_blank"
+               class="btn-obsidian inline-flex items-center gap-3 text-base">
+              Quiero ver mi sitio gratis
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <a href="#como-funciona" class="btn-obsidian-outline inline-flex items-center gap-2 text-base">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+              ¿Cómo funciona?
+            </a>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-8 text-violet-200/70 text-sm">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <span>Sin riesgo</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Entrega en 24-48h</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+              <span>Sin anticipo</span>
+            </div>
+          </div>
         </div>
 
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-          Tu sitio web médico.<br>
-          <span class="text-amber-400">Primero lo ves.</span>
-        </h1>
-        
-        <p class="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto mb-4 font-light">
-          Diseñamos tu sitio web profesional con tu información real.
-        </p>
-        <p class="text-lg text-white/30 max-w-xl mx-auto mb-12">
-          Lo ves terminado. Si te gusta, lo activas. Si no, no pagas nada.
-        </p>
+        <!-- Right: Hero image mockup -->
+        <div class="relative hidden lg:block">
+          <!-- Floating mockup card -->
+          <div class="relative">
+            <!-- Glow behind -->
+            <div class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 rounded-3xl blur-2xl"></div>
+            
+            <!-- Main mockup -->
+            <div class="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 shadow-2xl">
+              <!-- Browser bar -->
+              <div class="flex items-center gap-2 mb-4 pb-3 border-b border-white/10">
+                <div class="flex gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-400/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-400/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-400/80"></div>
+                </div>
+                <div class="flex-1 bg-white/5 rounded-lg px-4 py-1.5 text-xs text-violet-200/60 text-center">
+                  drasofiaherrera.com
+                </div>
+              </div>
+              
+              <!-- Website preview -->
+              <div class="aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
+                <img 
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop&q=80" 
+                  alt="Vista previa de sitio web médico profesional"
+                  class="w-full h-full object-cover opacity-90"
+                  loading="eager"
+                />
+                <!-- Overlay with text -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                  <div>
+                    <p class="text-violet-300 text-xs tracking-widest uppercase mb-1">Dermatología</p>
+                    <p class="text-white font-bold text-lg">Dra. Sofía Herrera</p>
+                    <p class="text-violet-200/70 text-sm">Especialista en piel sana</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <!-- CTA buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a href="https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20un%20sitio%20web%20para%20mi%20consultorio" 
-             target="_blank"
-             class="inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/20 hover:-translate-y-0.5 text-lg">
-            Quiero ver mi sitio gratis
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-          <a href="#como-funciona" class="inline-flex items-center gap-2 text-white/60 hover:text-white font-medium px-6 py-4 rounded-full transition-colors text-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-            ¿Cómo funciona?
-          </a>
-        </div>
+            <!-- Floating badge -->
+            <div class="absolute -right-4 top-1/4 bg-gradient-to-br from-green-400 to-emerald-500 text-slate-900 px-4 py-2 rounded-xl shadow-lg shadow-green-500/30 text-sm font-bold animate-float">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                99/100 velocidad
+              </div>
+            </div>
 
-        <!-- Trust badges -->
-        <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white/30 text-sm">
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            <span>Sin riesgo</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span>Entrega en 24-48h</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-            <span>Sin anticipo</span>
+            <!-- Floating card -->
+            <div class="absolute -left-8 bottom-1/4 bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-3 rounded-xl shadow-xl animate-float" style="animation-delay: 1s;">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <p class="text-white text-sm font-semibold">100% Responsive</p>
+                  <p class="text-violet-200/70 text-xs">Perfecto en móvil</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -156,7 +225,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p style={`color: ${doc.colores.secundario};`}>{doc.doctor.especialidad}</p>
               </div>
             </div>
-            <p class="text-white/50 max-w-lg mx-auto">
+            <p class="text-violet-200/70 max-w-lg mx-auto">
               Hemos preparado 3 propuestas de diseño para su sitio web profesional. 
               Elija la que más le guste para verla en detalle.
             </p>
@@ -168,7 +237,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
               const info = plantillaInfo[p];
               return (
                 <a href={`/${doc.slug}/${p}`} class="group block">
-                  <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-amber-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-400/10 hover:-translate-y-2">
+                  <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/10 hover:-translate-y-2">
                     <!-- Preview visual -->
                     <div class="aspect-video flex items-center justify-center p-8 relative overflow-hidden"
                          style={`background: linear-gradient(135deg, ${doc.colores.primario}, ${doc.colores.primario}dd);`}>
@@ -176,7 +245,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                         <div class="text-center">
                           <p style={`color: ${doc.colores.secundario};`} class="text-sm tracking-widest uppercase mb-2">{doc.doctor.especialidad}</p>
                           <h3 class="text-3xl font-bold text-white font-heading">{doc.doctor.nombre}</h3>
-                          <p class="text-white/50 mt-2 italic text-sm">"{doc.doctor.frase}"</p>
+                          <p class="text-violet-200/70 mt-2 italic text-sm">"{doc.doctor.frase}"</p>
                         </div>
                       )}
                       {p === 'moderna' && (
@@ -205,15 +274,15 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                     <!-- Info -->
                     <div class="p-6">
                       <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                        <h3 class="text-xl font-bold text-white group-hover:text-violet-400 transition-colors">
                           {info.label}
                         </h3>
                         <span class={`text-xs px-3 py-1 rounded-full bg-${info.badgeColor}-400/20 text-${info.badgeColor}-400`}>
                           {info.badge}
                         </span>
                       </div>
-                      <p class="text-white/50 text-sm">{info.desc}</p>
-                      <div class="mt-4 flex items-center gap-2 text-sm font-medium text-amber-400/80 group-hover:text-amber-400 transition-colors">
+                      <p class="text-violet-200/70 text-sm">{info.desc}</p>
+                      <div class="mt-4 flex items-center gap-2 text-sm font-medium text-violet-400/80 group-hover:text-violet-400 transition-colors">
                         <span>Ver esta propuesta</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
@@ -232,14 +301,14 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
       <div id="demo-showcase" class="mb-16">
         <!-- Título y badge -->
         <div class="text-center mb-10">
-          <span class="inline-block px-4 py-1.5 bg-amber-400/10 text-amber-400 text-sm font-semibold rounded-full mb-6 border border-amber-400/20">
+          <span class="inline-block px-4 py-1.5 bg-gradient-to-r from-violet-500 to-fuchsia-500/10 text-violet-400 text-sm font-semibold rounded-full mb-6 border border-violet-500/20">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline -mt-0.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             Páginas de muestra
           </span>
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
-            Mira cómo quedaría <span class="text-amber-400">tu sitio web</span>
+            Mira cómo quedaría <span class="text-violet-400">tu sitio web</span>
           </h2>
-          <p class="text-white/40 max-w-2xl mx-auto text-lg">
+          <p class="text-violet-200/60 max-w-2xl mx-auto text-lg">
             Estos son ejemplos reales de sitios web que creamos. Cada uno tiene 3 diseños diferentes. Explora y elige el estilo que más te guste.
           </p>
         </div>
@@ -278,7 +347,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                   <span class="block text-white font-semibold text-sm">{doc.doctor.titulo} {doc.doctor.nombre}</span>
                   <span class="block text-xs" style={`color: ${doc.colores.secundario};`}>{doc.doctor.especialidad} · {doc.contacto.ciudad}</span>
                 </div>
-                <span class="ml-2 px-2 py-0.5 bg-amber-400/10 text-amber-400 text-[10px] font-bold rounded-full border border-amber-400/20 uppercase tracking-wider">
+                <span class="ml-2 px-2 py-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500/10 text-violet-400 text-[10px] font-bold rounded-full border border-violet-500/20 uppercase tracking-wider">
                   Ejemplo
                 </span>
               </div>
@@ -290,7 +359,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 const info = plantillaInfo[p];
                 return (
                   <a href={`/${doc.slug}/${p}`} class="group block">
-                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-amber-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-400/10 hover:-translate-y-2">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/10 hover:-translate-y-2">
                       <!-- Preview visual -->
                       <div class="aspect-video flex items-center justify-center p-8 relative overflow-hidden"
                            style={`background: linear-gradient(135deg, ${doc.colores.primario}, ${doc.colores.primario}dd);`}>
@@ -298,7 +367,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                           <div class="text-center">
                             <p style={`color: ${doc.colores.secundario};`} class="text-sm tracking-widest uppercase mb-2">{doc.doctor.especialidad}</p>
                             <h3 class="text-3xl font-bold text-white font-heading">{doc.doctor.nombre}</h3>
-                            <p class="text-white/50 mt-2 italic text-sm">"{doc.doctor.frase}"</p>
+                            <p class="text-violet-200/70 mt-2 italic text-sm">"{doc.doctor.frase}"</p>
                           </div>
                         )}
                         {p === 'moderna' && (
@@ -327,15 +396,15 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                       <!-- Info -->
                       <div class="p-6">
                         <div class="flex items-center justify-between mb-3">
-                          <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                          <h3 class="text-xl font-bold text-white group-hover:text-violet-400 transition-colors">
                             {info.label}
                           </h3>
                           <span class={`text-xs px-3 py-1 rounded-full bg-${info.badgeColor}-400/20 text-${info.badgeColor}-400`}>
                             {info.badge}
                           </span>
                         </div>
-                        <p class="text-white/50 text-sm">{info.desc}</p>
-                        <div class="mt-4 flex items-center gap-2 text-sm font-medium text-amber-400/80 group-hover:text-amber-400 transition-colors">
+                        <p class="text-violet-200/70 text-sm">{info.desc}</p>
+                        <div class="mt-4 flex items-center gap-2 text-sm font-medium text-violet-400/80 group-hover:text-violet-400 transition-colors">
                           <span>Ver esta propuesta</span>
                           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
@@ -352,7 +421,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
         <!-- Nota de ejemplo -->
         <div class="text-center mt-8">
-          <p class="text-white/20 text-xs">
+          <p class="text-violet-200/60 text-xs">
             Estos son sitios de demostración con datos ficticios. Tu sitio web será personalizado con tu información real.
           </p>
         </div>
@@ -363,48 +432,48 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
         <!-- Cómo funciona -->
         <div id="como-funciona" class="scroll-mt-24">
           <div class="text-center mb-4">
-            <span class="inline-block px-4 py-1.5 bg-amber-400/10 text-amber-400 text-sm font-semibold rounded-full mb-6 border border-amber-400/20">
+            <span class="inline-block px-4 py-1.5 bg-gradient-to-r from-violet-500 to-fuchsia-500/10 text-violet-400 text-sm font-semibold rounded-full mb-6 border border-violet-500/20">
               Proceso simple
             </span>
             <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
               ¿Eres médico especialista?
             </h2>
-            <p class="text-white/40 mb-12 max-w-xl mx-auto text-lg">
+            <p class="text-violet-200/60 mb-12 max-w-xl mx-auto text-lg">
               Así de fácil es tener tu sitio web profesional
             </p>
           </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center relative">
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-amber-400 text-slate-900 font-bold text-sm flex items-center justify-center">1</div>
-            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-amber-400/10 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-slate-900 font-bold text-sm flex items-center justify-center">1</div>
+            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500/10 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"/>
               </svg>
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Diseñamos</h3>
-            <p class="text-white/40 text-sm">Creamos tu sitio web con tu información real, colores y estilo profesional. Todo sin pagar un solo centavo.</p>
+            <p class="text-violet-200/60 text-sm">Creamos tu sitio web con tu información real, colores y estilo profesional. Todo sin pagar un solo centavo.</p>
           </div>
           <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center relative">
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-amber-400 text-slate-900 font-bold text-sm flex items-center justify-center">2</div>
-            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-amber-400/10 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-slate-900 font-bold text-sm flex items-center justify-center">2</div>
+            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500/10 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
               </svg>
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Lo ves</h3>
-            <p class="text-white/40 text-sm">Te enviamos un link para que veas tu sitio terminado y funcionando.</p>
+            <p class="text-violet-200/60 text-sm">Te enviamos un link para que veas tu sitio terminado y funcionando.</p>
           </div>
           <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center relative">
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-amber-400 text-slate-900 font-bold text-sm flex items-center justify-center">3</div>
-            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-amber-400/10 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-slate-900 font-bold text-sm flex items-center justify-center">3</div>
+            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500/10 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
               </svg>
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Decides</h3>
-            <p class="text-white/40 text-sm">Si te gusta, lo publicas. Si no, no pagas nada. Sin compromiso.</p>
+            <p class="text-violet-200/60 text-sm">Si te gusta, lo publicas. Si no, no pagas nada. Sin compromiso.</p>
           </div>
         </div>
 
@@ -424,7 +493,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
       <!-- Info -->
       <div class="mt-20 text-center">
-        <p class="text-white/30 text-sm">
+        <p class="text-violet-200/70 text-sm">
           Todas las plantillas son 100% personalizables: colores, textos, servicios, horarios y más.
         </p>
       </div>
@@ -432,13 +501,13 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
       <!-- Tabla Comparativa -->
       <div id="comparativo" class="mt-24 scroll-mt-24">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <span class="inline-block px-4 py-1.5 bg-amber-400/10 text-amber-400 text-sm font-semibold rounded-full mb-6 border border-amber-400/20">
+          <span class="inline-block px-4 py-1.5 bg-gradient-to-r from-violet-500 to-fuchsia-500/10 text-violet-400 text-sm font-semibold rounded-full mb-6 border border-violet-500/20">
             Comparativo
           </span>
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
-            ¿Por qué elegir Primero<span class="text-amber-400">Ves</span>?
+            ¿Por qué elegir Primero<span class="text-violet-400">Ves</span>?
           </h2>
-          <p class="text-white/50 text-lg">
+          <p class="text-violet-200/70 text-lg">
             Compara y descubre por qué somos la mejor opción para médicos que quieren presencia digital sin complicaciones.
           </p>
         </div>
@@ -449,29 +518,29 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
             <!-- Header -->
             <thead>
               <tr>
-                <th class="text-left py-4 px-4 text-white/40 font-medium w-1/4"></th>
+                <th class="text-left py-4 px-4 text-violet-200/60 font-medium w-1/4"></th>
                 <th class="py-4 px-4 text-center">
-                  <div class="bg-amber-400/10 border border-amber-400/30 rounded-xl py-4 px-3">
-                    <span class="text-amber-400 font-bold text-lg">PrimeroVes</span>
-                    <p class="text-amber-400/60 text-xs mt-1">Recomendado</p>
+                  <div class="bg-gradient-to-r from-violet-500 to-fuchsia-500/10 border border-violet-500/30 rounded-xl py-4 px-3">
+                    <span class="text-violet-400 font-bold text-lg">PrimeroVes</span>
+                    <p class="text-violet-400/60 text-xs mt-1">Recomendado</p>
                   </div>
                 </th>
                 <th class="py-4 px-4 text-center">
                   <div class="bg-white/5 border border-white/10 rounded-xl py-4 px-3">
-                    <span class="text-white/70 font-bold text-lg">Freelancer</span>
-                    <p class="text-white/30 text-xs mt-1">Diseñador independiente</p>
+                    <span class="text-violet-200/70 font-bold text-lg">Freelancer</span>
+                    <p class="text-violet-200/70 text-xs mt-1">Diseñador independiente</p>
                   </div>
                 </th>
                 <th class="py-4 px-4 text-center">
                   <div class="bg-white/5 border border-white/10 rounded-xl py-4 px-3">
-                    <span class="text-white/70 font-bold text-lg">Agencia</span>
-                    <p class="text-white/30 text-xs mt-1">Agencia digital</p>
+                    <span class="text-violet-200/70 font-bold text-lg">Agencia</span>
+                    <p class="text-violet-200/70 text-xs mt-1">Agencia digital</p>
                   </div>
                 </th>
                 <th class="py-4 px-4 text-center">
                   <div class="bg-white/5 border border-white/10 rounded-xl py-4 px-3">
-                    <span class="text-white/70 font-bold text-lg">Wix / WordPress</span>
-                    <p class="text-white/30 text-xs mt-1">Hazlo tú mismo</p>
+                    <span class="text-violet-200/70 font-bold text-lg">Wix / WordPress</span>
+                    <p class="text-violet-200/70 text-xs mt-1">Hazlo tú mismo</p>
                   </div>
                 </th>
               </tr>
@@ -479,7 +548,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
             <tbody>
               <!-- Fila: Ves antes de pagar -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Ves tu sitio antes de pagar</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Ves tu sitio antes de pagar</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -504,17 +573,17 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
               <!-- Fila: Sin anticipo -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Sin anticipo ni compromiso</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Sin anticipo ni compromiso</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">50% anticipo</span>
+                  <span class="text-violet-200/60 text-xs">50% anticipo</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">30-50% anticipo</span>
+                  <span class="text-violet-200/60 text-xs">30-50% anticipo</span>
                 </td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
@@ -525,14 +594,14 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
               <!-- Fila: Diseño profesional -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Diseño profesional médico</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Diseño profesional médico</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Varía</span>
+                  <span class="text-violet-200/60 text-xs">Varía</span>
                 </td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
@@ -540,37 +609,37 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Plantillas genéricas</span>
+                  <span class="text-violet-200/60 text-xs">Plantillas genéricas</span>
                 </td>
               </tr>
 
               <!-- Fila: Tiempo de entrega -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Tiempo de entrega</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Tiempo de entrega</td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-amber-400 font-semibold text-sm">24-48 horas</span>
+                  <span class="text-violet-400 font-semibold text-sm">24-48 horas</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">2-4 semanas</span>
+                  <span class="text-violet-200/60 text-xs">2-4 semanas</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">4-8 semanas</span>
+                  <span class="text-violet-200/60 text-xs">4-8 semanas</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Depende de ti</span>
+                  <span class="text-violet-200/60 text-xs">Depende de ti</span>
                 </td>
               </tr>
 
               <!-- Fila: Optimizado SEO -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">SEO optimizado básico (Google)</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">SEO optimizado básico (Google)</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Varía</span>
+                  <span class="text-violet-200/60 text-xs">Varía</span>
                 </td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
@@ -578,37 +647,37 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Básico</span>
+                  <span class="text-violet-200/60 text-xs">Básico</span>
                 </td>
               </tr>
 
               <!-- Fila: Velocidad -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Velocidad de carga</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Velocidad de carga</td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-amber-400 font-semibold text-sm">99/100</span>
+                  <span class="text-violet-400 font-semibold text-sm">99/100</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">60-80/100</span>
+                  <span class="text-violet-200/60 text-xs">60-80/100</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">70-90/100</span>
+                  <span class="text-violet-200/60 text-xs">70-90/100</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">40-60/100</span>
+                  <span class="text-violet-200/60 text-xs">40-60/100</span>
                 </td>
               </tr>
 
               <!-- Fila: Responsive -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">100% responsive (móvil)</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">100% responsive (móvil)</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Varía</span>
+                  <span class="text-violet-200/60 text-xs">Varía</span>
                 </td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
@@ -624,100 +693,100 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
               <!-- Fila: WhatsApp integrado -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">WhatsApp y Doctoralia integrados</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">WhatsApp y Doctoralia integrados</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Extra</span>
+                  <span class="text-violet-200/60 text-xs">Extra</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Extra</span>
+                  <span class="text-violet-200/60 text-xs">Extra</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Plugins</span>
+                  <span class="text-violet-200/60 text-xs">Plugins</span>
                 </td>
               </tr>
 
               <!-- Fila: Mantenimiento -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Mantenimiento incluido</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Mantenimiento incluido</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Cobro extra</span>
+                  <span class="text-violet-200/60 text-xs">Cobro extra</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Contrato mensual</span>
+                  <span class="text-violet-200/60 text-xs">Contrato mensual</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Tú lo haces</span>
+                  <span class="text-violet-200/60 text-xs">Tú lo haces</span>
                 </td>
               </tr>
 
               <!-- Fila: Dominio personalizado -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Dominio personalizado incluido (ejemplo: drasofiaherrera.com)</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Dominio personalizado incluido (ejemplo: drasofiaherrera.com)</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Cobro extra</span>
+                  <span class="text-violet-200/60 text-xs">Cobro extra</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">Cobro extra</span>
+                  <span class="text-violet-200/60 text-xs">Cobro extra</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">~$50.000/año extra</span>
+                  <span class="text-violet-200/60 text-xs">~$50.000/año extra</span>
                 </td>
               </tr>
 
               <!-- Fila: Hosting -->
               <tr class="border-t border-white/5">
-                <td class="py-4 px-4 text-white/70 font-medium">Hosting y SSL incluido</td>
+                <td class="py-4 px-4 text-violet-200/70 font-medium">Hosting y SSL incluido</td>
                 <td class="py-4 px-4 text-center">
                   <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-400/10">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                   </span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">~$200.000/año</span>
+                  <span class="text-violet-200/60 text-xs">~$200.000/año</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">~$300.000/año</span>
+                  <span class="text-violet-200/60 text-xs">~$300.000/año</span>
                 </td>
                 <td class="py-4 px-4 text-center">
-                  <span class="text-white/40 text-xs">~$150.000/año</span>
+                  <span class="text-violet-200/60 text-xs">~$150.000/año</span>
                 </td>
               </tr>
 
               <!-- Fila: Precio -->
               <tr id="precio" class="border-t border-white/5 border-b border-white/5 scroll-mt-24">
-                <td class="py-5 px-4 text-white/70 font-bold">Inversión anual</td>
+                <td class="py-5 px-4 text-violet-200/70 font-bold">Inversión anual</td>
                 <td class="py-5 px-4 text-center">
-                  <span class="text-white/30 line-through text-sm">$600.000</span>
-                  <span class="text-amber-400 font-bold text-xl ml-2">$400.000*</span>
-                  <p class="text-amber-400/50 text-xs mt-0.5">COP / año</p>
+                  <span class="text-violet-200/70 line-through text-sm">$600.000</span>
+                  <span class="text-violet-400 font-bold text-xl ml-2">$400.000*</span>
+                  <p class="text-violet-400/50 text-xs mt-0.5">COP / año</p>
                   <span class="inline-block mt-1.5 px-2 py-0.5 bg-green-400/10 text-green-400 text-[10px] font-semibold rounded-full border border-green-400/20">Precio de lanzamiento</span>
                 </td>
                 <td class="py-5 px-4 text-center">
-                  <span class="text-white/60 font-bold text-lg">$1.500.000+</span>
-                  <p class="text-white/30 text-xs mt-0.5">COP único + hosting</p>
+                  <span class="text-violet-200/60 font-bold text-lg">$1.500.000+</span>
+                  <p class="text-violet-200/70 text-xs mt-0.5">COP único + hosting</p>
                 </td>
                 <td class="py-5 px-4 text-center">
-                  <span class="text-white/60 font-bold text-lg">$3.000.000+</span>
-                  <p class="text-white/30 text-xs mt-0.5">COP único + mensual</p>
+                  <span class="text-violet-200/60 font-bold text-lg">$3.000.000+</span>
+                  <p class="text-violet-200/70 text-xs mt-0.5">COP único + mensual</p>
                 </td>
                 <td class="py-5 px-4 text-center">
-                  <span class="text-white/60 font-bold text-lg">$600.000+</span>
-                  <p class="text-white/30 text-xs mt-0.5">COP / año (plan + dominio)</p>
+                  <span class="text-violet-200/60 font-bold text-lg">$600.000+</span>
+                  <p class="text-violet-200/70 text-xs mt-0.5">COP / año (plan + dominio)</p>
                 </td>
               </tr>
             </tbody>
@@ -725,16 +794,16 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
         </div>
 
         <!-- Nota al pie -->
-        <p class="text-white/20 text-xs mt-6 max-w-5xl mx-auto text-center">
+        <p class="text-violet-200/60 text-xs mt-6 max-w-5xl mx-auto text-center">
           * Precio base de lanzamiento. Aplica para sitios con la información proporcionada por el doctor. Precio regular: $600.000 COP/año.
         </p>
 
         <!-- CTA final -->
         <div class="text-center mt-16">
-          <p class="text-white/40 mb-6 text-sm">Sin riesgo. Sin anticipo. Sin contrato de permanencia.</p>
+          <p class="text-violet-200/60 mb-6 text-sm">Sin riesgo. Sin anticipo. Sin contrato de permanencia.</p>
           <a href="https://wa.me/573001234567?text=Hola%2C%20quiero%20ver%20mi%20sitio%20web%20médico%20con%20PrimeroVes" 
              target="_blank"
-             class="inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/20 hover:-translate-y-0.5">
+             class="inline-flex items-center gap-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-slate-900 font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/20 hover:-translate-y-0.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
               <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 0 0 .917.918l4.458-1.495A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.818-6.3-2.186l-.44-.362-3.2 1.073 1.073-3.2-.362-.44A9.956 9.956 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
@@ -753,7 +822,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
             Potencia tu presencia digital
           </h2>
-          <p class="text-white/50 text-lg">
+          <p class="text-violet-200/70 text-lg">
             Tu sitio web es solo el comienzo. Agrega lo que necesites, cuando lo necesites.
           </p>
         </div>
@@ -772,10 +841,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-blue-400 text-sm font-semibold">$70.000 COP ventana de cambios</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               ¿Cambió de teléfono, dirección, horarios o correo? Actualizamos su información en menos de 24 horas.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Teléfonos y WhatsApp
@@ -802,10 +871,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-purple-400 text-sm font-semibold">Desde $90.000 COP por sección</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Agregue nuevas secciones a su sitio para destacar más aspectos de su práctica médica.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Preguntas frecuentes (FAQ)
@@ -826,30 +895,30 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
           </div>
 
           <!-- Gestión de Redes Sociales -->
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-amber-400/30 transition-all duration-300 group">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-violet-500/30 transition-all duration-300 group">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/></svg>
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500/10 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/></svg>
               </div>
               <div>
                 <h3 class="text-white font-bold">Redes Sociales</h3>
-                <p class="text-amber-400 text-sm font-semibold">Desde $400.000 COP / mes</p>
+                <p class="text-violet-400 text-sm font-semibold">Desde $400.000 COP / mes</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Gestión profesional de Instagram y Facebook para atraer pacientes y posicionar su marca médica.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-3.5 h-3.5 text-violet-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 12 publicaciones mensuales con diseño
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-3.5 h-3.5 text-violet-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Stories y reels de contenido médico
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-3.5 h-3.5 text-violet-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Calendario editorial + reportes
               </li>
             </ul>
@@ -866,10 +935,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-green-400 text-sm font-semibold">$450.000 COP una vez</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Diseño profesional de su marca médica. Logo, paleta de colores y tipografía que transmitan confianza.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Logo profesional en varios formatos
@@ -896,10 +965,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-cyan-400 text-sm font-semibold">$600.000 COP una vez</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Videos cortos de pacientes satisfechos. Nada genera más confianza que testimonios reales en video.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 3 videos testimoniales editados
@@ -926,10 +995,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-violet-400 text-sm font-semibold">$180.000 COP c/u</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Página específica para cada procedimiento o tratamiento. Ideal para posicionar en Google y captar pacientes.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-violet-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Diseño enfocado en conversión
@@ -956,10 +1025,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-teal-400 text-sm font-semibold">$100.000 COP</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Tarjeta de presentación digital con código QR que lleva directo a su sitio web. Moderna y práctica.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-teal-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Diseño acorde a su identidad visual
@@ -986,10 +1055,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-sky-400 text-sm font-semibold">$180.000 COP</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Optimización profesional de su perfil en Doctoralia para atraer más pacientes desde la plataforma.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Textos profesionales y optimizados
@@ -1016,10 +1085,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-red-400 text-sm font-semibold">$100.000 COP único</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Aparezca en Google Maps cuando busquen su especialidad. Configuración completa de su ficha.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Creación y verificación
@@ -1046,10 +1115,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <p class="text-pink-400 text-sm font-semibold">$600.000 COP</p>
               </div>
             </div>
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-violet-200/60 text-sm leading-relaxed">
               Fotos profesionales del doctor, consultorio e instalaciones. Imágenes reales generan más confianza.
             </p>
-            <ul class="mt-4 space-y-2 text-white/30 text-xs">
+            <ul class="mt-4 space-y-2 text-violet-200/70 text-xs">
               <li class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-pink-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                 Retrato profesional del doctor
@@ -1077,28 +1146,28 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
             <!-- Header del cotizador -->
             <div class="mb-8">
               <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/></svg>
+                <svg class="w-7 h-7 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/></svg>
                 Cotiza tu paquete ideal
               </h3>
-              <p class="text-white/40 text-sm">Selecciona los servicios que necesitas. El plan base ya está incluido.</p>
+              <p class="text-violet-200/60 text-sm">Selecciona los servicios que necesitas. El plan base ya está incluido.</p>
             </div>
 
             <!-- Plan base (siempre incluido) -->
-            <div class="bg-amber-400/5 border border-amber-400/20 rounded-xl p-4 mb-6">
+            <div class="bg-gradient-to-r from-violet-500 to-fuchsia-500/5 border border-violet-500/20 rounded-xl p-4 mb-6">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                  <div class="w-5 h-5 rounded bg-amber-400 flex items-center justify-center shrink-0">
+                  <div class="w-5 h-5 rounded bg-gradient-to-r from-violet-500 to-fuchsia-500 flex items-center justify-center shrink-0">
                     <svg class="w-3.5 h-3.5 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white font-semibold text-sm">Plan Base — Sitio web profesional</span>
-                    <p class="text-white/30 text-xs">Incluye dominio .com + hosting + SSL + diseño responsive + SEO</p>
+                    <p class="text-violet-200/70 text-xs">Incluye dominio .com + hosting + SSL + diseño responsive + SEO</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/30 line-through text-xs">$600.000</span>
-                  <span class="text-amber-400 font-bold text-sm ml-1">$400.000</span>
-                  <p class="text-amber-400/50 text-[10px]">COP / año</p>
+                  <span class="text-violet-200/70 line-through text-xs">$600.000</span>
+                  <span class="text-violet-400 font-bold text-sm ml-1">$400.000</span>
+                  <p class="text-violet-400/50 text-[10px]">COP / año</p>
                 </div>
               </div>
             </div>
@@ -1106,155 +1175,155 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
             <!-- Servicios seleccionables -->
             <div class="space-y-3 mb-8" id="cotizador-servicios">
               
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="70000" data-name="Actualización de Datos">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="70000" data-name="Actualización de Datos">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Actualización de Datos</span>
-                    <p class="text-white/30 text-xs">Cambios de teléfono, dirección, horarios — ventana de cambios</p>
+                    <p class="text-violet-200/70 text-xs">Cambios de teléfono, dirección, horarios — ventana de cambios</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$70.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$70.000</span>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="90000" data-name="Secciones Nuevas">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="90000" data-name="Secciones Nuevas">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Secciones Nuevas</span>
-                    <p class="text-white/30 text-xs">FAQ, galería antes/después, convenios — desde $90.000 por sección</p>
+                    <p class="text-violet-200/70 text-xs">FAQ, galería antes/después, convenios — desde $90.000 por sección</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$90.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$90.000</span>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="400000" data-name="Redes Sociales (1 mes)" data-recurring="true">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="400000" data-name="Redes Sociales (1 mes)" data-recurring="true">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Redes Sociales</span>
-                    <p class="text-white/30 text-xs">Gestión de Instagram y Facebook — 12 publicaciones/mes</p>
+                    <p class="text-violet-200/70 text-xs">Gestión de Instagram y Facebook — 12 publicaciones/mes</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$400.000</span>
-                  <p class="text-white/30 text-[10px]">/mes</p>
+                  <span class="text-violet-200/70 font-semibold text-sm">$400.000</span>
+                  <p class="text-violet-200/70 text-[10px]">/mes</p>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="350000" data-name="Logo e Identidad Visual">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="350000" data-name="Logo e Identidad Visual">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Logo e Identidad Visual</span>
-                    <p class="text-white/30 text-xs">Logo profesional, paleta de colores, tipografía, manual de marca</p>
+                    <p class="text-violet-200/70 text-xs">Logo profesional, paleta de colores, tipografía, manual de marca</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$350.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$350.000</span>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="500000" data-name="Video Testimonial">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="500000" data-name="Video Testimonial">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Video Testimonial de Pacientes</span>
-                    <p class="text-white/30 text-xs">3 videos editados, optimizados para web y redes sociales</p>
+                    <p class="text-violet-200/70 text-xs">3 videos editados, optimizados para web y redes sociales</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$500.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$500.000</span>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="180000" data-name="Landing por Procedimiento">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="180000" data-name="Landing por Procedimiento">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Landing por Procedimiento</span>
-                    <p class="text-white/30 text-xs">Página específica optimizada para SEO y conversión</p>
+                    <p class="text-violet-200/70 text-xs">Página específica optimizada para SEO y conversión</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$180.000</span>
-                  <p class="text-white/30 text-[10px]">c/u</p>
+                  <span class="text-violet-200/70 font-semibold text-sm">$180.000</span>
+                  <p class="text-violet-200/70 text-[10px]">c/u</p>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="100000" data-name="Tarjeta Digital + QR">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="100000" data-name="Tarjeta Digital + QR">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Tarjeta Digital + QR</span>
-                    <p class="text-white/30 text-xs">Tarjeta de presentación digital con código QR a su sitio</p>
+                    <p class="text-violet-200/70 text-xs">Tarjeta de presentación digital con código QR a su sitio</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$100.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$100.000</span>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="180000" data-name="Perfil en Doctoralia">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="180000" data-name="Perfil en Doctoralia">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Perfil en Doctoralia</span>
-                    <p class="text-white/30 text-xs">Optimización profesional de textos, fotos y enlace a su sitio</p>
+                    <p class="text-violet-200/70 text-xs">Optimización profesional de textos, fotos y enlace a su sitio</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$180.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$180.000</span>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="100000" data-name="Google My Business">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="100000" data-name="Google My Business">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Google My Business</span>
-                    <p class="text-white/30 text-xs">Aparezca en Google Maps — creación, verificación y optimización</p>
+                    <p class="text-violet-200/70 text-xs">Aparezca en Google Maps — creación, verificación y optimización</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$100.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$100.000</span>
                 </div>
               </label>
 
-              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-amber-400/30 transition-all duration-200" data-price="600000" data-name="Sesión Fotográfica">
+              <label class="cotizador-item flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-violet-500/30 transition-all duration-200" data-price="600000" data-name="Sesión Fotográfica">
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded border-2 border-white/20 flex items-center justify-center shrink-0 transition-all cotizador-check">
                     <svg class="w-3.5 h-3.5 text-slate-900 opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
                     <span class="text-white/80 font-medium text-sm">Sesión Fotográfica Profesional</span>
-                    <p class="text-white/30 text-xs">10-15 fotos del doctor, consultorio e instalaciones</p>
+                    <p class="text-violet-200/70 text-xs">10-15 fotos del doctor, consultorio e instalaciones</p>
                   </div>
                 </div>
                 <div class="text-right shrink-0 ml-4">
-                  <span class="text-white/50 font-semibold text-sm">$600.000</span>
+                  <span class="text-violet-200/70 font-semibold text-sm">$600.000</span>
                 </div>
               </label>
 
@@ -1265,12 +1334,12 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
               <!-- Resumen de precios -->
               <div class="space-y-3">
                 <div class="flex items-center justify-between text-sm">
-                  <span class="text-white/40">Plan base (sitio + dominio + hosting)</span>
-                  <span class="text-white/60 font-medium">$400.000</span>
+                  <span class="text-violet-200/60">Plan base (sitio + dominio + hosting)</span>
+                  <span class="text-violet-200/60 font-medium">$400.000</span>
                 </div>
                 <div class="flex items-center justify-between text-sm" id="cotizador-adicionales-row" style="display:none;">
-                  <span class="text-white/40">Servicios adicionales</span>
-                  <span class="text-white/60 font-medium" id="cotizador-adicionales">$0</span>
+                  <span class="text-violet-200/60">Servicios adicionales</span>
+                  <span class="text-violet-200/60 font-medium" id="cotizador-adicionales">$0</span>
                 </div>
                 <div class="flex items-center justify-between text-sm" id="cotizador-descuento-row" style="display:none;">
                   <span class="text-green-400 flex items-center gap-1">
@@ -1282,19 +1351,19 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <div class="border-t border-white/10 pt-3 flex items-center justify-between">
                   <span class="text-white font-bold text-lg">Total</span>
                   <div class="text-right">
-                    <span class="text-white/30 line-through text-sm mr-2" id="cotizador-sin-dcto" style="display:none;">$400.000</span>
-                    <span class="text-amber-400 font-bold text-2xl" id="cotizador-total">$400.000</span>
-                    <p class="text-amber-400/50 text-xs" id="cotizador-nota">COP</p>
+                    <span class="text-violet-200/70 line-through text-sm mr-2" id="cotizador-sin-dcto" style="display:none;">$400.000</span>
+                    <span class="text-violet-400 font-bold text-2xl" id="cotizador-total">$400.000</span>
+                    <p class="text-violet-400/50 text-xs" id="cotizador-nota">COP</p>
                   </div>
                 </div>
-                <p class="text-white/20 text-xs" id="cotizador-servicios-lista"></p>
+                <p class="text-violet-200/60 text-xs" id="cotizador-servicios-lista"></p>
               </div>
 
               <!-- CTA -->
               <a id="cotizador-cta"
                  href="https://wa.me/573001234567?text=Hola%2C%20quiero%20cotizar%20mi%20sitio%20web%20con%20PrimeroVes.%20Plan%20base%20%24400.000"
                  target="_blank"
-                 class="mt-6 w-full inline-flex items-center justify-center gap-3 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-8 py-4 rounded-full text-sm transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/20 hover:-translate-y-0.5">
+                 class="mt-6 w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-slate-900 font-bold px-8 py-4 rounded-full text-sm transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/20 hover:-translate-y-0.5">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                   <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 0 0 .917.918l4.458-1.495A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.818-6.3-2.186l-.44-.362-3.2 1.073 1.073-3.2-.362-.44A9.956 9.956 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
@@ -1308,29 +1377,29 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 py-12">
+    <footer class="border-t border-violet-500/10 py-12 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
           <!-- Logo footer -->
           <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center">
-              <span class="text-slate-900 font-bold text-base font-heading leading-none">P</span>
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/20">
+              <span class="text-white font-bold text-base leading-none">P</span>
             </div>
-            <span class="text-lg font-bold text-white/60 tracking-tight">
-              Primero<span class="text-amber-400/60">Ves</span>
+            <span class="text-lg font-bold text-violet-200/70 tracking-tight">
+              Primero<span class="text-gradient-obsidian">Ves</span>
             </span>
           </div>
 
           <!-- Links footer -->
-          <div class="flex items-center gap-6 text-sm text-white/30">
-            <a href="#como-funciona" class="hover:text-white/60 transition-colors">Cómo funciona</a>
-            <a href="#comparativo" class="hover:text-white/60 transition-colors">Comparativo</a>
-            <a href="#precio" class="hover:text-white/60 transition-colors">Precio</a>
-            <a href="#servicios-adicionales" class="hover:text-white/60 transition-colors">Servicios</a>
+          <div class="flex items-center gap-6 text-sm text-violet-200/70">
+            <a href="#como-funciona" class="hover:text-violet-400 transition-colors">Cómo funciona</a>
+            <a href="#comparativo" class="hover:text-violet-400 transition-colors">Comparativo</a>
+            <a href="#precio" class="hover:text-violet-400 transition-colors">Precio</a>
+            <a href="#servicios-adicionales" class="hover:text-violet-400 transition-colors">Servicios</a>
           </div>
 
           <!-- Copyright -->
-          <p class="text-white/20 text-sm">
+          <p class="text-violet-200/60 text-sm">
             &copy; {new Date().getFullYear()} PrimeroVes
           </p>
         </div>
@@ -1373,13 +1442,13 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
             tab.style.borderColor = '';
             tab.style.color = 'white';
             tab.classList.add('demo-tab-active');
-            tab.classList.remove('border-white/10', 'text-white/60');
+            tab.classList.remove('border-white/10', 'text-violet-200/60');
           } else {
             tab.style.backgroundColor = 'transparent';
             tab.style.borderColor = 'rgba(255,255,255,0.1)';
             tab.style.color = 'rgba(255,255,255,0.6)';
             tab.classList.remove('demo-tab-active');
-            tab.classList.add('border-white/10', 'text-white/60');
+            tab.classList.add('border-white/10', 'text-violet-200/60');
           }
         }
         // Update content
@@ -1411,10 +1480,10 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
         if (isScrolled !== scrolled) {
           scrolled = isScrolled;
           if (scrolled) {
-            navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
-            navbar.style.backdropFilter = 'blur(12px)';
-            navbar.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
-            navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+            navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.backdropFilter = 'blur(16px)';
+            navbar.style.borderBottom = '1px solid rgba(139, 92, 246, 0.1)';
+            navbar.style.boxShadow = '0 4px 30px rgba(139, 92, 246, 0.1)';
           } else {
             navbar.style.backgroundColor = 'transparent';
             navbar.style.backdropFilter = 'none';
@@ -1549,11 +1618,11 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
             var checkSvg = checkBox.querySelector('svg');
 
             if (selectedServices[name]) {
-              checkBox.style.backgroundColor = '#fbbf24';
-              checkBox.style.borderColor = '#fbbf24';
+              checkBox.style.backgroundColor = '#8b5cf6';
+              checkBox.style.borderColor = '#8b5cf6';
               checkSvg.style.opacity = '1';
-              item.style.borderColor = 'rgba(251, 191, 36, 0.3)';
-              item.style.backgroundColor = 'rgba(251, 191, 36, 0.05)';
+              item.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+              item.style.backgroundColor = 'rgba(139, 92, 246, 0.05)';
             } else {
               checkBox.style.backgroundColor = 'transparent';
               checkBox.style.borderColor = 'rgba(255,255,255,0.2)';
