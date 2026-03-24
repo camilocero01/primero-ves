@@ -1,0 +1,51 @@
+---
+/**
+ * PLANTILLA MINIMALISTA - Servicios Section
+ * Grid limpio con cards de borde mínimo.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { servicios } = config;
+---
+
+<section id="servicios" class="py-32 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Encabezado minimal -->
+    <div class="max-w-2xl mb-20">
+      <p class="text-xs tracking-[0.3em] uppercase text-gray-400 mb-4">Servicios</p>
+      <h2 class="text-4xl md:text-5xl font-extralight text-gray-900 leading-tight">
+        Atención médica<br />
+        <span class="font-normal">de excelencia</span>
+      </h2>
+    </div>
+
+    <!-- Grid de servicios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-100">
+      {servicios.map((servicio, index) => (
+        <article 
+          class="group bg-white p-10 md:p-12 hover:bg-gray-50 transition-colors duration-500"
+          style={`animation-delay: ${index * 50}ms`}
+        >
+          <div class="flex items-start gap-6">
+            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-gray-400 group-hover:text-gray-900 transition-colors duration-300">
+              <Icon name={servicio.icono} size={28} />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-medium text-gray-900 mb-3">
+                {servicio.nombre}
+              </h3>
+              <p class="text-gray-500 font-light leading-relaxed text-sm">
+                {servicio.descripcion}
+              </p>
+            </div>
+          </div>
+          <!-- Línea decorativa -->
+          <div class="mt-8 w-8 h-px bg-gray-200 group-hover:w-16 group-hover:bg-gray-900 transition-all duration-500"></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

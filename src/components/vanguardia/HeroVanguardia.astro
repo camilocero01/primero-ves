@@ -1,0 +1,150 @@
+---
+/**
+ * PLANTILLA VANGUARDIA - Hero Section
+ * Diseño futurista con gradientes, glassmorphism y efectos neón.
+ * Para médicos que quieren proyectar innovación y tecnología.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { doctor, contacto, cta, imagenes } = config;
+const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
+---
+
+<section id="inicio" class="relative min-h-screen flex items-center bg-slate-950 overflow-hidden">
+  <!-- Fondo con mesh gradient -->
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-violet-950/50 via-slate-950 to-cyan-950/50"></div>
+    <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-violet-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+    <div class="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-fuchsia-500/10 rounded-full blur-[80px] -translate-x-1/2 -translate-y-1/2"></div>
+  </div>
+
+  <!-- Grid pattern overlay -->
+  <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <!-- Contenido -->
+      <div class="order-2 lg:order-1">
+        <!-- Badge con gradiente -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8">
+          <span class="w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 animate-pulse"></span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400 text-xs tracking-widest uppercase font-medium">{doctor.especialidad}</span>
+        </div>
+
+        <!-- Nombre con gradiente -->
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+          <span class="text-white/90">{doctor.titulo}</span><br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400">{doctor.nombre}</span>
+        </h1>
+
+        <!-- Frase -->
+        <p class="text-xl text-white/60 font-light mb-4 leading-relaxed">
+          {doctor.frase}
+        </p>
+
+        {doctor.subespecialidad && (
+          <div class="flex items-center gap-2 mb-8">
+            <div class="w-8 h-px bg-gradient-to-r from-violet-500 to-cyan-500"></div>
+            <span class="text-cyan-400 text-sm">{doctor.subespecialidad}</span>
+          </div>
+        )}
+
+        <!-- Stats con glassmorphism -->
+        <div class="flex gap-4 mb-10">
+          <div class="px-6 py-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <p class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">15+</p>
+            <p class="text-white/50 text-xs">Años exp.</p>
+          </div>
+          <div class="px-6 py-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <p class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400">5k+</p>
+            <p class="text-white/50 text-xs">Pacientes</p>
+          </div>
+          <div class="px-6 py-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <p class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">★5.0</p>
+            <p class="text-white/50 text-xs">Rating</p>
+          </div>
+        </div>
+
+        <!-- CTAs con gradiente -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 text-white font-semibold overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/25"
+          >
+            <span class="relative z-10">{cta.principal}</span>
+            <Icon name="arrow-right" size={18} class="relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+          <a
+            href="#servicios"
+            class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border border-white/20 text-white hover:bg-white/5 hover:border-violet-500/50 transition-all duration-300"
+          >
+            <span>{cta.secundario}</span>
+            <Icon name="chevron-down" size={18} />
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen del doctor con efectos -->
+      <div class="order-1 lg:order-2 relative">
+        <div class="relative max-w-lg mx-auto">
+          <!-- Glow effect -->
+          <div class="absolute -inset-4 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 rounded-3xl blur-2xl"></div>
+          
+          <!-- Imagen con borde gradiente -->
+          <div class="relative rounded-3xl p-1 bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-500">
+            <div class="rounded-[22px] overflow-hidden bg-slate-950">
+              <img 
+                src={doctor.foto} 
+                alt={`${doctor.titulo} ${doctor.nombre} - ${doctor.especialidad}`}
+                class="w-full aspect-[3/4] object-cover"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent rounded-[22px]"></div>
+            </div>
+          </div>
+
+          <!-- Floating card -->
+          <div class="absolute -bottom-6 -left-6 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 flex items-center justify-center">
+                <Icon name="shield-check" size={20} class="text-white" />
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium">Certificado</p>
+                <p class="text-white/50 text-xs">Consejo de Especialidad</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech badge -->
+          <div class="absolute -top-4 -right-4 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20">
+            <Icon name="cpu" size={24} class="text-cyan-400" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+    <div class="flex flex-col items-center gap-2">
+      <div class="w-6 h-10 rounded-full border border-white/20 flex items-start justify-center p-2">
+        <div class="w-1 h-2 rounded-full bg-gradient-to-b from-violet-500 to-cyan-500 animate-bounce"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+</style>

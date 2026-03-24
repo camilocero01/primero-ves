@@ -1,0 +1,65 @@
+---
+/**
+ * PLANTILLA PREMIUM - Galería Section
+ * Galería con overlay oscuro y efectos elegantes.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="galeria" class="py-32 bg-[#0A0A0A]">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-2 px-4 py-2 border border-[#C9A96E]/30 rounded-full mb-6">
+        <span class="text-[#C9A96E] text-xs tracking-[0.2em] uppercase">Tecnología</span>
+      </span>
+      <h2 class="text-4xl md:text-5xl font-light text-white mb-6">
+        Equipos de <span class="text-[#C9A96E]">Vanguardia</span>
+      </h2>
+    </div>
+
+    <!-- Grid de galería -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {imagenes.galeria.map((img, index) => (
+        <figure 
+          class={`relative group overflow-hidden ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <div class={`${index === 0 ? 'aspect-square' : 'aspect-square'}`}>
+            <img 
+              src={img.url} 
+              alt={img.alt}
+              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
+          
+          <!-- Overlay premium -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          
+          <!-- Contenido del overlay -->
+          <div class="absolute inset-0 flex flex-col justify-end p-4 md:p-6">
+            <div class="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <p class="text-[#C9A96E] text-xs tracking-wider uppercase mb-1">Equipamiento</p>
+              <p class="text-white text-sm font-light">{img.alt}</p>
+            </div>
+          </div>
+
+          <!-- Borde dorado al hover -->
+          <div class="absolute inset-0 border border-[#C9A96E]/0 group-hover:border-[#C9A96E]/50 transition-all duration-500"></div>
+        </figure>
+      ))}
+    </div>
+
+    <!-- Número decorativo -->
+    <div class="mt-12 flex justify-center items-center gap-8">
+      {imagenes.galeria.map((_, index) => (
+        <span class="w-2 h-2 rounded-full bg-[#C9A96E]/30 hover:bg-[#C9A96E] transition-colors duration-300 cursor-pointer"></span>
+      ))}
+    </div>
+  </div>
+</section>

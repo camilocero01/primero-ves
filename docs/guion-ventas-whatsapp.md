@@ -62,11 +62,14 @@
 
 5. **Deploy automático** a Vercel (push a main)
 
-### URLs generadas:
+### URLs generadas (6 plantillas):
 ```
-https://primero-ves.vercel.app/{slug}/elegante
-https://primero-ves.vercel.app/{slug}/moderna  
-https://primero-ves.vercel.app/{slug}/clasica
+https://primero-ves.vercel.app/{slug}/elegante     ← Sofisticada y con prestigio
+https://primero-ves.vercel.app/{slug}/moderna      ← Audaz e innovadora
+https://primero-ves.vercel.app/{slug}/clasica      ← Tradicional y sólida
+https://primero-ves.vercel.app/{slug}/minimalista  ← Ultra limpia y espaciosa
+https://primero-ves.vercel.app/{slug}/premium      ← Oscura, lujosa y exclusiva
+https://primero-ves.vercel.app/{slug}/vanguardia   ← Futurista con gradientes
 ```
 
 ---
@@ -369,13 +372,16 @@ Para copiar/pegar y solo cambiar datos:
 ```
 Hola [TITULO] [APELLIDO] 👋
 
-Vi su consultorio de [ESPECIALIDAD] en [CIUDAD] y le creé 3 opciones de página web profesional:
+Vi su consultorio de [ESPECIALIDAD] en [CIUDAD] y le creé 6 opciones de página web profesional:
 
 🔗 Elegante: https://primero-ves.vercel.app/[SLUG]/elegante
 🔗 Moderna: https://primero-ves.vercel.app/[SLUG]/moderna
 🔗 Clásica: https://primero-ves.vercel.app/[SLUG]/clasica
+🔗 Minimalista: https://primero-ves.vercel.app/[SLUG]/minimalista
+🔗 Premium: https://primero-ves.vercel.app/[SLUG]/premium
+🔗 Vanguardia: https://primero-ves.vercel.app/[SLUG]/vanguardia
 
-Todo con sus datos reales. ¿Qué le parece?
+Todo con sus datos reales. ¿Cuál le gusta más?
 
 [TU NOMBRE]
 PrimeroVes

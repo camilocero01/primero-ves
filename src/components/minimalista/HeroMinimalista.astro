@@ -1,0 +1,110 @@
+---
+/**
+ * PLANTILLA MINIMALISTA - Hero Section
+ * Diseño ultra limpio con máximo espacio en blanco.
+ * Tipografía grande, imagen full-screen, contenido centrado.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { doctor, contacto, cta, imagenes } = config;
+const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
+---
+
+<section id="inicio" class="relative min-h-screen flex items-center justify-center">
+  <!-- Fondo con imagen y overlay sutil -->
+  <div class="absolute inset-0">
+    <img 
+      src={imagenes.heroFondo} 
+      alt={`${doctor.especialidad} - ${doctor.nombre}`}
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-white/85 backdrop-blur-sm"></div>
+  </div>
+
+  <!-- Contenido centrado -->
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center py-32">
+    <!-- Especialidad -->
+    <p class="text-xs tracking-[0.3em] uppercase text-gray-400 mb-8 font-light">
+      {doctor.especialidad}
+      {doctor.subespecialidad && ` · ${doctor.subespecialidad}`}
+    </p>
+
+    <!-- Nombre del doctor - Tipografía hero -->
+    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight tracking-tight text-gray-900 mb-6 leading-[0.9]">
+      <span class="block font-light">{doctor.titulo}</span>
+      <span class="block font-normal">{doctor.nombre}</span>
+    </h1>
+
+    <!-- Frase - Delicada -->
+    <p class="text-lg md:text-xl text-gray-500 font-light max-w-xl mx-auto mb-12 leading-relaxed">
+      {doctor.frase}
+    </p>
+
+    <!-- CTA minimalista -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white text-sm tracking-wide hover:bg-gray-800 transition-all duration-500"
+      >
+        <span>{cta.principal}</span>
+        <Icon name="arrow-right" size={16} class="transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
+      <a
+        href="#servicios"
+        class="inline-flex items-center gap-2 px-8 py-4 text-gray-600 text-sm tracking-wide hover:text-gray-900 transition-colors duration-300"
+      >
+        <span>{cta.secundario}</span>
+      </a>
+    </div>
+
+    <!-- Foto circular del doctor -->
+    <div class="mt-16 flex justify-center">
+      <div class="relative">
+        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-white shadow-2xl">
+          <img 
+            src={doctor.foto} 
+            alt={`${doctor.titulo} ${doctor.nombre}`}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+        <!-- Indicador de disponibilidad -->
+        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-white shadow-lg rounded-full">
+          <span class="flex items-center gap-1.5 text-xs text-gray-600">
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            Disponible
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator minimalista -->
+  <div class="absolute bottom-12 left-1/2 -translate-x-1/2">
+    <div class="flex flex-col items-center gap-2 text-gray-400">
+      <span class="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-gray-300 to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  section h1, section p, section a, section div {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+  
+  section h1 { animation-delay: 0.1s; }
+  section p { animation-delay: 0.2s; }
+  section a { animation-delay: 0.3s; }
+</style>

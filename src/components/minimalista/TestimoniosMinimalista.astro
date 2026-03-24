@@ -1,0 +1,80 @@
+---
+/**
+ * PLANTILLA MINIMALISTA - Testimonios Section
+ * Cards elegantes con citas destacadas.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { testimonios, doctor } = config;
+---
+
+<section id="testimonios" class="py-32 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Encabezado -->
+    <div class="max-w-2xl mb-20">
+      <p class="text-xs tracking-[0.3em] uppercase text-gray-400 mb-4">Testimonios</p>
+      <h2 class="text-4xl md:text-5xl font-extralight text-gray-900 leading-tight">
+        Lo que dicen<br />
+        <span class="font-normal">nuestros pacientes</span>
+      </h2>
+    </div>
+
+    <!-- Grid de testimonios -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonios.map((testimonio, index) => (
+        <article 
+          class="group relative"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <!-- Quote mark -->
+          <div class="text-gray-100 text-9xl font-serif leading-none absolute -top-8 -left-2 select-none group-hover:text-gray-200 transition-colors duration-300">
+            "
+          </div>
+          
+          <div class="relative pt-8">
+            <!-- Testimonio -->
+            <blockquote class="text-gray-600 font-light leading-relaxed mb-8 text-lg">
+              {testimonio.texto}
+            </blockquote>
+
+            <!-- Rating -->
+            <div class="flex gap-1 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span class={`text-sm ${i < testimonio.calificacion ? 'text-gray-900' : 'text-gray-200'}`}>
+                  ★
+                </span>
+              ))}
+            </div>
+
+            <!-- Autor -->
+            <footer class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                <span class="text-gray-400 text-sm font-medium">
+                  {testimonio.nombre.charAt(0)}
+                </span>
+              </div>
+              <div>
+                <cite class="not-italic text-gray-900 font-medium text-sm">
+                  {testimonio.nombre}
+                </cite>
+                <p class="text-gray-400 text-xs">Paciente verificado</p>
+              </div>
+            </footer>
+          </div>
+
+          <!-- Línea inferior -->
+          <div class="mt-8 w-full h-px bg-gray-100 group-hover:bg-gray-200 transition-colors duration-300"></div>
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA sutil -->
+    <div class="mt-20 text-center">
+      <p class="text-gray-400 text-sm font-light">
+        +5,000 pacientes satisfechos confían en {doctor.titulo} {doctor.nombre.split(' ')[0]}
+      </p>
+    </div>
+  </div>
+</section>

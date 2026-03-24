@@ -1,0 +1,82 @@
+---
+/**
+ * PLANTILLA VANGUARDIA - Galería Section
+ * Grid asimétrico con efectos de hover modernos.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="galeria" class="py-32 bg-slate-900 relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900"></div>
+  <div class="absolute top-1/2 left-0 w-[600px] h-[600px] bg-fuchsia-500/10 rounded-full blur-[120px] -translate-y-1/2"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <!-- Encabezado -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+      <div>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6">
+          <Icon name="image" size={16} class="text-fuchsia-400" />
+          <span class="text-white/70 text-xs tracking-widest uppercase">Galería</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-white">
+          Equipos de <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400">última generación</span>
+        </h2>
+      </div>
+      <p class="text-white/60 font-light max-w-md">
+        Tecnología avanzada para {doctor.especialidad.toLowerCase()} de precisión
+      </p>
+    </div>
+
+    <!-- Grid de galería -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {imagenes.galeria.map((img, index) => (
+        <figure 
+          class={`relative group overflow-hidden rounded-2xl ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
+        >
+          <div class={`${index === 0 ? 'aspect-square' : 'aspect-square'} overflow-hidden`}>
+            <img 
+              src={img.url} 
+              alt={img.alt}
+              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
+          
+          <!-- Overlay con gradiente -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-60 group-hover:opacity-90 transition-all duration-500"></div>
+          
+          <!-- Borde gradiente al hover -->
+          <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:from-violet-500 group-hover:to-cyan-500 opacity-0 group-hover:opacity-100 transition-all duration-500" style="border-image: linear-gradient(135deg, #8b5cf6, #06b6d4) 1;"></div>
+
+          <!-- Contenido -->
+          <div class="absolute inset-0 p-4 md:p-6 flex flex-col justify-end">
+            <div class="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-1 h-4 bg-gradient-to-b from-violet-500 to-cyan-500 rounded-full"></div>
+                <p class="text-white text-sm font-medium">{img.alt}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Corner accent -->
+          <div class="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-white/0 group-hover:border-cyan-500/50 rounded-tr-lg transition-all duration-500"></div>
+        </figure>
+      ))}
+    </div>
+
+    <!-- Tech badges -->
+    <div class="mt-12 flex flex-wrap justify-center gap-4">
+      {['Alta Precisión', 'Tecnología 4K', 'Digitalizado', 'Certificado'].map((badge) => (
+        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs tracking-wide">
+          {badge}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

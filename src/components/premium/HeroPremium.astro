@@ -1,0 +1,142 @@
+---
+/**
+ * PLANTILLA PREMIUM - Hero Section
+ * Diseño oscuro y lujoso con acentos dorados.
+ * Para especialistas que quieren transmitir exclusividad.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { doctor, contacto, cta, imagenes } = config;
+const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
+---
+
+<section id="inicio" class="relative min-h-screen flex items-center bg-[#0D0D0D] overflow-hidden">
+  <!-- Patrón de fondo sutil -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #C9A96E 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <!-- Línea dorada decorativa superior -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A96E] to-transparent"></div>
+
+  <!-- Elementos decorativos -->
+  <div class="absolute top-20 right-20 w-96 h-96 rounded-full bg-[#C9A96E]/5 blur-3xl"></div>
+  <div class="absolute bottom-20 left-20 w-64 h-64 rounded-full bg-[#C9A96E]/5 blur-3xl"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <!-- Contenido -->
+      <div class="order-2 lg:order-1">
+        <!-- Badge premium -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#C9A96E]/30 rounded-full mb-8">
+          <span class="w-2 h-2 bg-[#C9A96E] rounded-full animate-pulse"></span>
+          <span class="text-[#C9A96E] text-xs tracking-[0.2em] uppercase">{doctor.especialidad}</span>
+        </div>
+
+        <!-- Nombre con estilo premium -->
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-6">
+          <span class="text-[#C9A96E]">{doctor.titulo}</span><br />
+          <span class="font-semibold">{doctor.nombre}</span>
+        </h1>
+
+        <!-- Frase con borde dorado -->
+        <div class="border-l-2 border-[#C9A96E] pl-6 mb-8">
+          <p class="text-xl text-white/70 font-light italic">
+            "{doctor.frase}"
+          </p>
+          {doctor.subespecialidad && (
+            <p class="text-[#C9A96E] text-sm mt-2 tracking-wide">
+              {doctor.subespecialidad}
+            </p>
+          )}
+        </div>
+
+        <!-- Stats premium -->
+        <div class="flex gap-12 mb-12">
+          <div class="text-center">
+            <p class="text-4xl font-light text-[#C9A96E]">15+</p>
+            <p class="text-white/50 text-xs tracking-widest uppercase mt-1">Años</p>
+          </div>
+          <div class="text-center">
+            <p class="text-4xl font-light text-[#C9A96E]">5,000+</p>
+            <p class="text-white/50 text-xs tracking-widest uppercase mt-1">Pacientes</p>
+          </div>
+          <div class="text-center">
+            <p class="text-4xl font-light text-[#C9A96E]">★ 5.0</p>
+            <p class="text-white/50 text-xs tracking-widest uppercase mt-1">Rating</p>
+          </div>
+        </div>
+
+        <!-- CTAs premium -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#C9A96E] to-[#B8956A] text-[#0D0D0D] font-semibold text-sm tracking-wide hover:shadow-lg hover:shadow-[#C9A96E]/20 transition-all duration-500"
+          >
+            <span>{cta.principal}</span>
+            <Icon name="arrow-right" size={16} class="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+          <a
+            href="#servicios"
+            class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/20 text-white text-sm tracking-wide hover:border-[#C9A96E] hover:text-[#C9A96E] transition-all duration-300"
+          >
+            <span>{cta.secundario}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen del doctor con marco premium -->
+      <div class="order-1 lg:order-2 relative">
+        <div class="relative max-w-md mx-auto lg:max-w-none">
+          <!-- Marco dorado -->
+          <div class="absolute -inset-4 border border-[#C9A96E]/30"></div>
+          <div class="absolute -inset-8 border border-[#C9A96E]/10"></div>
+          
+          <!-- Imagen -->
+          <div class="relative aspect-[3/4] overflow-hidden">
+            <img 
+              src={doctor.foto} 
+              alt={`${doctor.titulo} ${doctor.nombre} - ${doctor.especialidad}`}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent"></div>
+          </div>
+
+          <!-- Badge de certificación -->
+          <div class="absolute -bottom-6 -right-6 bg-[#0D0D0D] border border-[#C9A96E]/30 p-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#C9A96E]/10 flex items-center justify-center">
+                <Icon name="award" size={20} class="text-[#C9A96E]" />
+              </div>
+              <div>
+                <p class="text-[#C9A96E] text-xs tracking-wider">CERTIFICADO</p>
+                <p class="text-white/70 text-[10px]">Consejo de Especialidad</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator premium -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+    <div class="flex flex-col items-center gap-2">
+      <span class="text-[#C9A96E]/50 text-[10px] tracking-[0.3em] uppercase">Explora</span>
+      <div class="w-px h-12 bg-gradient-to-b from-[#C9A96E] to-transparent animate-pulse"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+</style>

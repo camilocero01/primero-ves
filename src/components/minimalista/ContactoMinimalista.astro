@@ -1,0 +1,154 @@
+---
+/**
+ * PLANTILLA MINIMALISTA - Contacto Section
+ * Diseño split con mapa y formulario limpio.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { contacto, horarios, cta, doctor, redesSociales } = config;
+const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
+---
+
+<section id="contacto" class="py-32 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Encabezado -->
+    <div class="max-w-2xl mb-20">
+      <p class="text-xs tracking-[0.3em] uppercase text-gray-400 mb-4">Contacto</p>
+      <h2 class="text-4xl md:text-5xl font-extralight text-gray-900 leading-tight">
+        Agenda tu<br />
+        <span class="font-normal">cita hoy</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <!-- Información de contacto -->
+      <div class="space-y-12">
+        <!-- Dirección -->
+        <div class="group">
+          <p class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Dirección</p>
+          <a 
+            href={contacto.googleMapsUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-gray-900 font-light text-lg leading-relaxed hover:text-gray-600 transition-colors duration-300"
+          >
+            {contacto.direccion}<br />
+            {contacto.ciudad}, {contacto.estado}
+          </a>
+        </div>
+
+        <!-- Teléfono y WhatsApp -->
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <p class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Teléfono</p>
+            <a 
+              href={`tel:${contacto.telefono}`}
+              class="text-gray-900 font-light hover:text-gray-600 transition-colors duration-300"
+            >
+              {contacto.telefono}
+            </a>
+          </div>
+          <div>
+            <p class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">WhatsApp</p>
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-900 font-light hover:text-gray-600 transition-colors duration-300"
+            >
+              Enviar mensaje
+            </a>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <p class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Email</p>
+          <a 
+            href={`mailto:${contacto.email}`}
+            class="text-gray-900 font-light hover:text-gray-600 transition-colors duration-300"
+          >
+            {contacto.email}
+          </a>
+        </div>
+
+        <!-- Horarios -->
+        <div>
+          <p class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Horarios de atención</p>
+          <div class="space-y-2">
+            {horarios.map((horario) => (
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600 font-light">{horario.dias}</span>
+                <span class="text-gray-900">{horario.horas}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div>
+          <p class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-4">Síguenos</p>
+          <div class="flex gap-4">
+            {redesSociales.facebook && (
+              <a href={redesSociales.facebook} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition-colors duration-300" aria-label="Facebook">
+                <Icon name="facebook" size={20} />
+              </a>
+            )}
+            {redesSociales.instagram && (
+              <a href={redesSociales.instagram} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition-colors duration-300" aria-label="Instagram">
+                <Icon name="instagram" size={20} />
+              </a>
+            )}
+            {redesSociales.linkedin && (
+              <a href={redesSociales.linkedin} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition-colors duration-300" aria-label="LinkedIn">
+                <Icon name="linkedin" size={20} />
+              </a>
+            )}
+            {redesSociales.doctoralia && (
+              <a href={redesSociales.doctoralia} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition-colors duration-300" aria-label="Doctoralia">
+                <Icon name="stethoscope" size={20} />
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- CTA principal -->
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white text-sm tracking-wide hover:bg-gray-800 transition-all duration-500 group"
+        >
+          <Icon name="whatsapp" size={18} />
+          <span>{cta.principal} por WhatsApp</span>
+          <Icon name="arrow-right" size={16} class="transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      </div>
+
+      <!-- Mapa -->
+      <div class="relative">
+        <div class="aspect-square lg:aspect-auto lg:h-full min-h-[400px] bg-gray-100 overflow-hidden">
+          <iframe
+            src={contacto.googleMapsEmbed}
+            width="100%"
+            height="100%"
+            style="border:0; filter: grayscale(100%);"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Ubicación de ${doctor.titulo} ${doctor.nombre}`}
+            class="hover:filter-none transition-all duration-500"
+          ></iframe>
+        </div>
+        <!-- Overlay con info -->
+        <div class="absolute bottom-6 left-6 bg-white p-4 shadow-lg max-w-xs">
+          <p class="font-medium text-gray-900 text-sm">{doctor.titulo} {doctor.nombre}</p>
+          <p class="text-gray-500 text-xs mt-1">{doctor.especialidad}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

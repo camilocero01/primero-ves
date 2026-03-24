@@ -1,0 +1,102 @@
+---
+/**
+ * PLANTILLA PREMIUM - Testimonios Section
+ * Cards elegantes con estilo de revista de lujo.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { testimonios, doctor } = config;
+---
+
+<section id="testimonios" class="py-32 bg-[#0D0D0D] relative overflow-hidden">
+  <!-- Decoración de fondo -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-[#C9A96E]/5"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-[#C9A96E]/10"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <span class="inline-flex items-center gap-2 px-4 py-2 border border-[#C9A96E]/30 rounded-full mb-6">
+        <Icon name="star" size={14} class="text-[#C9A96E]" />
+        <span class="text-[#C9A96E] text-xs tracking-[0.2em] uppercase">Testimonios</span>
+      </span>
+      <h2 class="text-4xl md:text-5xl font-light text-white mb-6">
+        Experiencias <span class="text-[#C9A96E]">Reales</span>
+      </h2>
+      <p class="text-white/60 font-light">
+        La satisfacción de nuestros pacientes es nuestro mayor logro
+      </p>
+    </div>
+
+    <!-- Grid de testimonios -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonios.map((testimonio, index) => (
+        <article 
+          class={`group relative p-8 border border-white/10 bg-white/5 hover:border-[#C9A96E]/30 transition-all duration-500 ${index === 1 ? 'md:-translate-y-8' : ''}`}
+        >
+          <!-- Quote icon -->
+          <div class="w-12 h-12 rounded-full bg-[#C9A96E]/10 flex items-center justify-center mb-6">
+            <span class="text-[#C9A96E] text-2xl font-serif">"</span>
+          </div>
+
+          <!-- Testimonio -->
+          <blockquote class="text-white/80 font-light leading-relaxed mb-8 text-lg">
+            {testimonio.texto}
+          </blockquote>
+
+          <!-- Rating con estrellas doradas -->
+          <div class="flex gap-1 mb-6">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Icon 
+                name="star" 
+                size={16} 
+                class={i < testimonio.calificacion ? 'text-[#C9A96E]' : 'text-white/20'} 
+              />
+            ))}
+          </div>
+
+          <!-- Autor -->
+          <footer class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-[#C9A96E]/20 flex items-center justify-center">
+              <span class="text-[#C9A96E] font-semibold">
+                {testimonio.nombre.charAt(0)}
+              </span>
+            </div>
+            <div>
+              <cite class="not-italic text-white font-medium block">
+                {testimonio.nombre}
+              </cite>
+              <span class="text-[#C9A96E]/60 text-xs tracking-wider">Paciente verificado</span>
+            </div>
+          </footer>
+
+          <!-- Línea dorada inferior -->
+          <div class="absolute bottom-0 left-0 w-0 h-px bg-[#C9A96E] group-hover:w-full transition-all duration-700"></div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Stats de confianza -->
+    <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-b border-white/10">
+      <div class="text-center">
+        <p class="text-4xl font-light text-[#C9A96E]">5,000+</p>
+        <p class="text-white/50 text-xs tracking-wider uppercase mt-2">Pacientes satisfechos</p>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-light text-[#C9A96E]">★ 5.0</p>
+        <p class="text-white/50 text-xs tracking-wider uppercase mt-2">Calificación promedio</p>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-light text-[#C9A96E]">98%</p>
+        <p class="text-white/50 text-xs tracking-wider uppercase mt-2">Recomendarían</p>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-light text-[#C9A96E]">500+</p>
+        <p class="text-white/50 text-xs tracking-wider uppercase mt-2">Reseñas en línea</p>
+      </div>
+    </div>
+  </div>
+</section>

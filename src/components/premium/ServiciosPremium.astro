@@ -1,0 +1,72 @@
+---
+/**
+ * PLANTILLA PREMIUM - Servicios Section
+ * Cards con estilo oscuro y bordes dorados.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { servicios } = config;
+---
+
+<section id="servicios" class="py-32 bg-[#0D0D0D] relative overflow-hidden">
+  <!-- Patrón de fondo -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #C9A96E 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <!-- Encabezado premium -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <span class="inline-flex items-center gap-2 px-4 py-2 border border-[#C9A96E]/30 rounded-full mb-6">
+        <span class="text-[#C9A96E] text-xs tracking-[0.2em] uppercase">Servicios Premium</span>
+      </span>
+      <h2 class="text-4xl md:text-5xl font-light text-white mb-6">
+        Atención de <span class="text-[#C9A96E]">Excelencia</span>
+      </h2>
+      <p class="text-white/60 font-light">
+        Cada servicio está diseñado para brindarle la mejor experiencia en salud
+      </p>
+    </div>
+
+    <!-- Grid de servicios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {servicios.map((servicio, index) => (
+        <article 
+          class="group relative p-8 bg-white/5 border border-white/10 hover:border-[#C9A96E]/50 transition-all duration-500"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <!-- Número de servicio -->
+          <span class="absolute top-6 right-6 text-[#C9A96E]/20 text-4xl font-light">
+            0{index + 1}
+          </span>
+
+          <!-- Icono -->
+          <div class="w-14 h-14 rounded-full bg-[#C9A96E]/10 flex items-center justify-center mb-6 group-hover:bg-[#C9A96E]/20 transition-colors duration-300">
+            <Icon name={servicio.icono} size={24} class="text-[#C9A96E]" />
+          </div>
+
+          <!-- Contenido -->
+          <h3 class="text-xl font-semibold text-white mb-4 group-hover:text-[#C9A96E] transition-colors duration-300">
+            {servicio.nombre}
+          </h3>
+          <p class="text-white/60 font-light leading-relaxed text-sm">
+            {servicio.descripcion}
+          </p>
+
+          <!-- Línea dorada inferior -->
+          <div class="absolute bottom-0 left-0 w-0 h-px bg-[#C9A96E] group-hover:w-full transition-all duration-500"></div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Línea decorativa -->
+    <div class="mt-20 flex items-center justify-center gap-4">
+      <div class="w-20 h-px bg-gradient-to-r from-transparent to-[#C9A96E]/50"></div>
+      <Icon name="diamond" size={16} class="text-[#C9A96E]/50" />
+      <div class="w-20 h-px bg-gradient-to-l from-transparent to-[#C9A96E]/50"></div>
+    </div>
+  </div>
+</section>

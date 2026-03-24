@@ -474,5 +474,5 @@ export function getAllSlugs(): string[] {
 }
 
 /** Lista de plantillas disponibles */
-export const plantillas = ['elegante', 'moderna', 'clasica'] as const;
+export const plantillas = ['elegante', 'moderna', 'clasica', 'minimalista', 'premium', 'vanguardia'] as const;
 export type Plantilla = (typeof plantillas)[number];

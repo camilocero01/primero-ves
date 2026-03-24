@@ -12,9 +12,12 @@ const demoSlugs = ['dr-carlos-mendoza', 'dra-sofia-herrera', 'dr-alejandro-ruiz'
 const demoDoctores = doctores.filter(d => demoSlugs.includes(d.slug));
 
 const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: string; desc: string }> = {
-  elegante: { label: 'Elegante', badge: 'Popular', badgeColor: 'amber', desc: 'Sofisticada y con prestigio' },
-  moderna:  { label: 'Moderna',  badge: 'Bold',    badgeColor: 'blue',  desc: 'Audaz e innovadora' },
-  clasica:  { label: 'Clásica',  badge: 'Sobria',  badgeColor: 'green', desc: 'Tradicional y sólida' },
+  elegante:    { label: 'Elegante',    badge: 'Popular',    badgeColor: 'amber',  desc: 'Sofisticada y con prestigio' },
+  moderna:     { label: 'Moderna',     badge: 'Bold',       badgeColor: 'blue',   desc: 'Audaz e innovadora' },
+  clasica:     { label: 'Clásica',     badge: 'Sobria',     badgeColor: 'green',  desc: 'Tradicional y sólida' },
+  minimalista: { label: 'Minimalista', badge: 'Clean',      badgeColor: 'slate',  desc: 'Ultra limpia y espaciosa' },
+  premium:     { label: 'Premium',     badge: 'Luxury',     badgeColor: 'yellow', desc: 'Oscura y exclusiva' },
+  vanguardia:  { label: 'Vanguardia',  badge: 'Futurista',  badgeColor: 'cyan',   desc: 'Gradientes y glassmorphism' },
 };
 ---
 
@@ -347,13 +350,13 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
               </div>
             </div>
             <p class="text-violet-200/70 max-w-lg mx-auto">
-              Hemos preparado 3 propuestas de diseño para su sitio web profesional. 
+              Hemos preparado 6 propuestas de diseño para su sitio web profesional. 
               Elija la que más le guste para verla en detalle.
             </p>
           </div>
 
-          <!-- Las 3 plantillas -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Las 6 plantillas -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {plantillas.map((p) => {
               const info = plantillaInfo[p];
               return (
@@ -389,6 +392,41 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                             </div>
                           </div>
                           <div class="w-1/2 bg-gradient-to-br from-gray-300 to-gray-400"></div>
+                        </div>
+                      )}
+                      {p === 'minimalista' && (
+                        <div class="absolute inset-0 bg-white flex items-center justify-center p-4">
+                          <div class="text-center">
+                            <p class="text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-2">{doc.doctor.especialidad}</p>
+                            <h3 class="text-2xl font-extralight text-gray-900">{doc.doctor.titulo}</h3>
+                            <h3 class="text-2xl font-normal text-gray-900">{doc.doctor.nombre.split(' ').slice(0, 2).join(' ')}</h3>
+                          </div>
+                        </div>
+                      )}
+                      {p === 'premium' && (
+                        <div class="absolute inset-0 bg-[#0D0D0D] flex items-center justify-center p-4">
+                          <div class="text-center">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 border border-[#C9A96E]/30 rounded-full mb-3">
+                              <span class="w-1.5 h-1.5 bg-[#C9A96E] rounded-full"></span>
+                              <span class="text-[#C9A96E] text-[10px] tracking-widest uppercase">{doc.doctor.especialidad}</span>
+                            </div>
+                            <h3 class="text-xl font-light text-white">{doc.doctor.titulo}</h3>
+                            <h3 class="text-xl font-semibold text-[#C9A96E]">{doc.doctor.nombre.split(' ').slice(0, 2).join(' ')}</h3>
+                          </div>
+                        </div>
+                      )}
+                      {p === 'vanguardia' && (
+                        <div class="absolute inset-0 bg-slate-950 flex items-center justify-center p-4 overflow-hidden">
+                          <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/20 rounded-full blur-3xl"></div>
+                          <div class="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/20 rounded-full blur-2xl"></div>
+                          <div class="text-center relative">
+                            <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 mb-2">
+                              <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"></span>
+                              <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400 text-[10px] tracking-widest uppercase">{doc.doctor.especialidad}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">{doc.doctor.titulo}</h3>
+                            <h3 class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">{doc.doctor.nombre.split(' ').slice(0, 2).join(' ')}</h3>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -471,11 +509,11 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <span class="ml-2 px-2 py-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500/10 text-violet-400 text-[10px] font-bold rounded-full border border-violet-500/20 uppercase tracking-wider">
                   Ejemplo
                 </span>
-              </div>
+            </div>
             </div>
 
-            <!-- Las 3 plantillas -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Las 6 plantillas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {plantillas.map((p) => {
                 const info = plantillaInfo[p];
                 return (
@@ -511,6 +549,41 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                               </div>
                             </div>
                             <div class="w-1/2 bg-gradient-to-br from-gray-300 to-gray-400"></div>
+                          </div>
+                        )}
+                        {p === 'minimalista' && (
+                          <div class="absolute inset-0 bg-white flex items-center justify-center p-4">
+                            <div class="text-center">
+                              <p class="text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-2">{doc.doctor.especialidad}</p>
+                              <h3 class="text-2xl font-extralight text-gray-900">{doc.doctor.titulo}</h3>
+                              <h3 class="text-2xl font-normal text-gray-900">{doc.doctor.nombre.split(' ').slice(0, 2).join(' ')}</h3>
+                            </div>
+                          </div>
+                        )}
+                        {p === 'premium' && (
+                          <div class="absolute inset-0 bg-[#0D0D0D] flex items-center justify-center p-4">
+                            <div class="text-center">
+                              <div class="inline-flex items-center gap-2 px-3 py-1 border border-[#C9A96E]/30 rounded-full mb-3">
+                                <span class="w-1.5 h-1.5 bg-[#C9A96E] rounded-full"></span>
+                                <span class="text-[#C9A96E] text-[10px] tracking-widest uppercase">{doc.doctor.especialidad}</span>
+                              </div>
+                              <h3 class="text-xl font-light text-white">{doc.doctor.titulo}</h3>
+                              <h3 class="text-xl font-semibold text-[#C9A96E]">{doc.doctor.nombre.split(' ').slice(0, 2).join(' ')}</h3>
+                            </div>
+                          </div>
+                        )}
+                        {p === 'vanguardia' && (
+                          <div class="absolute inset-0 bg-slate-950 flex items-center justify-center p-4 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/20 rounded-full blur-3xl"></div>
+                            <div class="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/20 rounded-full blur-2xl"></div>
+                            <div class="text-center relative">
+                              <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 mb-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"></span>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400 text-[10px] tracking-widest uppercase">{doc.doctor.especialidad}</span>
+                              </div>
+                              <h3 class="text-lg font-bold text-white">{doc.doctor.titulo}</h3>
+                              <h3 class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">{doc.doctor.nombre.split(' ').slice(0, 2).join(' ')}</h3>
+                            </div>
                           </div>
                         )}
                       </div>

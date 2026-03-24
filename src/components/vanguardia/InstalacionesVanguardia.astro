@@ -1,0 +1,104 @@
+---
+/**
+ * PLANTILLA VANGUARDIA - Instalaciones Section
+ * Carousel horizontal con estilo futurista.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes } = config;
+---
+
+<section id="instalaciones" class="py-32 bg-slate-900 relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
+  <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-violet-500/10 rounded-full blur-[100px]"></div>
+  <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[80px]"></div>
+
+  <div class="relative z-10">
+    <!-- Encabezado -->
+    <div class="max-w-7xl mx-auto px-6 mb-16">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6">
+            <Icon name="building" size={16} class="text-violet-400" />
+            <span class="text-white/70 text-xs tracking-widest uppercase">Instalaciones</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-white">
+            Espacios <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">innovadores</span>
+          </h2>
+        </div>
+        <p class="text-white/60 font-light max-w-md">
+          Ambientes diseñados con la más alta tecnología para tu comodidad
+        </p>
+      </div>
+    </div>
+
+    <!-- Carousel horizontal -->
+    <div class="overflow-x-auto scrollbar-hide">
+      <div class="flex gap-4 px-6 pb-4" style="width: max-content;">
+        {imagenes.instalaciones.map((img, index) => (
+          <figure 
+            class="relative flex-shrink-0 w-80 md:w-[400px] group"
+          >
+            <!-- Card con borde gradiente -->
+            <div class="relative rounded-3xl p-px bg-gradient-to-br from-violet-500/50 via-transparent to-cyan-500/50 overflow-hidden">
+              <div class="rounded-[23px] overflow-hidden bg-slate-950">
+                <div class="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={img.url} 
+                    alt={img.alt}
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+                
+                <!-- Contenido -->
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400 text-xs font-medium">0{index + 1}</span>
+                    <div class="flex-1 h-px bg-gradient-to-r from-violet-500/50 to-transparent"></div>
+                  </div>
+                  <h3 class="text-white font-medium">{img.alt}</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Glow effect on hover -->
+            <div class="absolute -inset-4 bg-gradient-to-r from-violet-500/0 via-fuchsia-500/0 to-cyan-500/0 group-hover:from-violet-500/10 group-hover:via-fuchsia-500/10 group-hover:to-cyan-500/10 rounded-3xl blur-xl transition-all duration-500 -z-10"></div>
+          </figure>
+        ))}
+      </div>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="max-w-7xl mx-auto px-6 mt-8">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4 text-white/40">
+          <span class="text-xs tracking-widest uppercase">Desliza para explorar</span>
+          <Icon name="arrow-right" size={16} />
+        </div>
+        <div class="flex gap-2">
+          {imagenes.instalaciones.map((_, index) => (
+            <span class={`w-8 h-1 rounded-full ${index === 0 ? 'bg-gradient-to-r from-violet-500 to-cyan-500' : 'bg-white/20'}`}></span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+/**
+ * PLANTILLA MINIMALISTA - Galería Section
+ * Diseño masonry con imágenes a pantalla completa.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { imagenes, doctor } = config;
+---
+
+<section id="galeria" class="py-32 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Encabezado -->
+    <div class="max-w-2xl mb-20">
+      <p class="text-xs tracking-[0.3em] uppercase text-gray-400 mb-4">Galería</p>
+      <h2 class="text-4xl md:text-5xl font-extralight text-gray-900 leading-tight">
+        Tecnología y<br />
+        <span class="font-normal">precisión</span>
+      </h2>
+    </div>
+
+    <!-- Grid asimétrico -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+      {imagenes.galeria.slice(0, 1).map((img) => (
+        <figure class="col-span-2 row-span-2 relative group overflow-hidden">
+          <img 
+            src={img.url} 
+            alt={img.alt}
+            class="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <figcaption class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <p class="text-white text-sm font-light">{img.alt}</p>
+          </figcaption>
+        </figure>
+      ))}
+      
+      {imagenes.galeria.slice(1, 3).map((img) => (
+        <figure class="relative group overflow-hidden">
+          <img 
+            src={img.url} 
+            alt={img.alt}
+            class="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        </figure>
+      ))}
+      
+      {imagenes.galeria.slice(3).map((img) => (
+        <figure class="relative group overflow-hidden">
+          <img 
+            src={img.url} 
+            alt={img.alt}
+            class="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        </figure>
+      ))}
+      
+      <!-- Placeholder si no hay suficientes imágenes -->
+      {imagenes.galeria.length < 4 && (
+        <figure class="bg-gray-100 aspect-square flex items-center justify-center">
+          <p class="text-gray-300 text-xs tracking-widest">+</p>
+        </figure>
+      )}
+    </div>
+
+    <!-- Caption -->
+    <p class="mt-8 text-center text-gray-400 text-sm font-light">
+      Equipos de última generación para {doctor.especialidad.toLowerCase()}
+    </p>
+  </div>
+</section>

@@ -1,0 +1,188 @@
+---
+/**
+ * PLANTILLA PREMIUM - Contacto Section
+ * Diseño elegante con mapa oscuro y detalles dorados.
+ */
+import type { DoctorConfig } from '../../config/siteConfig';
+import Icon from '../Icon.astro';
+
+interface Props { config: DoctorConfig; }
+const { config } = Astro.props;
+const { contacto, horarios, cta, doctor, redesSociales } = config;
+const whatsappLink = `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(cta.whatsappMensaje)}`;
+---
+
+<section id="contacto" class="py-32 bg-[#0A0A0A] relative">
+  <!-- Línea dorada superior -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A96E]/30 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <span class="inline-flex items-center gap-2 px-4 py-2 border border-[#C9A96E]/30 rounded-full mb-6">
+        <span class="text-[#C9A96E] text-xs tracking-[0.2em] uppercase">Contacto</span>
+      </span>
+      <h2 class="text-4xl md:text-5xl font-light text-white mb-6">
+        Agende su <span class="text-[#C9A96E]">Cita</span>
+      </h2>
+      <p class="text-white/60 font-light">
+        Estamos a su disposición para brindarle la atención que merece
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Información de contacto -->
+      <div class="space-y-8">
+        <!-- Card de dirección -->
+        <div class="p-8 border border-white/10 bg-white/5">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-[#C9A96E]/10 flex items-center justify-center flex-shrink-0">
+              <Icon name="map-pin" size={20} class="text-[#C9A96E]" />
+            </div>
+            <div>
+              <p class="text-[#C9A96E] text-xs tracking-wider uppercase mb-2">Ubicación</p>
+              <a 
+                href={contacto.googleMapsUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-white font-light hover:text-[#C9A96E] transition-colors duration-300"
+              >
+                {contacto.direccion}<br />
+                {contacto.ciudad}, {contacto.estado}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards de contacto en grid -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-6 border border-white/10 bg-white/5">
+            <div class="flex items-center gap-3 mb-3">
+              <Icon name="phone" size={18} class="text-[#C9A96E]" />
+              <span class="text-[#C9A96E] text-xs tracking-wider uppercase">Teléfono</span>
+            </div>
+            <a 
+              href={`tel:${contacto.telefono}`}
+              class="text-white font-light hover:text-[#C9A96E] transition-colors duration-300"
+            >
+              {contacto.telefono}
+            </a>
+          </div>
+
+          <div class="p-6 border border-white/10 bg-white/5">
+            <div class="flex items-center gap-3 mb-3">
+              <Icon name="whatsapp" size={18} class="text-[#C9A96E]" />
+              <span class="text-[#C9A96E] text-xs tracking-wider uppercase">WhatsApp</span>
+            </div>
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white font-light hover:text-[#C9A96E] transition-colors duration-300"
+            >
+              Enviar mensaje
+            </a>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="p-6 border border-white/10 bg-white/5">
+          <div class="flex items-center gap-3 mb-3">
+            <Icon name="mail" size={18} class="text-[#C9A96E]" />
+            <span class="text-[#C9A96E] text-xs tracking-wider uppercase">Email</span>
+          </div>
+          <a 
+            href={`mailto:${contacto.email}`}
+            class="text-white font-light hover:text-[#C9A96E] transition-colors duration-300"
+          >
+            {contacto.email}
+          </a>
+        </div>
+
+        <!-- Horarios -->
+        <div class="p-8 border border-[#C9A96E]/30 bg-[#C9A96E]/5">
+          <div class="flex items-center gap-3 mb-6">
+            <Icon name="clock" size={18} class="text-[#C9A96E]" />
+            <span class="text-[#C9A96E] text-xs tracking-wider uppercase">Horarios de Atención</span>
+          </div>
+          <div class="space-y-3">
+            {horarios.map((horario) => (
+              <div class="flex justify-between text-sm border-b border-white/10 pb-3 last:border-0">
+                <span class="text-white/70">{horario.dias}</span>
+                <span class="text-white font-medium">{horario.horas}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="flex items-center gap-4">
+          <span class="text-white/50 text-xs tracking-wider uppercase">Síguenos:</span>
+          <div class="flex gap-3">
+            {redesSociales.facebook && (
+              <a href={redesSociales.facebook} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9A96E] hover:text-[#C9A96E] transition-all duration-300" aria-label="Facebook">
+                <Icon name="facebook" size={18} />
+              </a>
+            )}
+            {redesSociales.instagram && (
+              <a href={redesSociales.instagram} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9A96E] hover:text-[#C9A96E] transition-all duration-300" aria-label="Instagram">
+                <Icon name="instagram" size={18} />
+              </a>
+            )}
+            {redesSociales.linkedin && (
+              <a href={redesSociales.linkedin} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9A96E] hover:text-[#C9A96E] transition-all duration-300" aria-label="LinkedIn">
+                <Icon name="linkedin" size={18} />
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- CTA principal -->
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-[#C9A96E] to-[#B8956A] text-[#0D0D0D] font-semibold text-sm tracking-wide hover:shadow-lg hover:shadow-[#C9A96E]/20 transition-all duration-500 group"
+        >
+          <Icon name="whatsapp" size={20} />
+          <span>{cta.principal} por WhatsApp</span>
+          <Icon name="arrow-right" size={16} class="transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      </div>
+
+      <!-- Mapa con estilo premium -->
+      <div class="relative">
+        <div class="sticky top-8">
+          <!-- Marco dorado -->
+          <div class="absolute -inset-4 border border-[#C9A96E]/20"></div>
+          
+          <div class="relative aspect-square lg:aspect-auto lg:h-[600px] overflow-hidden">
+            <iframe
+              src={contacto.googleMapsEmbed}
+              width="100%"
+              height="100%"
+              style="border:0; filter: invert(90%) hue-rotate(180deg);"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title={`Ubicación de ${doctor.titulo} ${doctor.nombre}`}
+            ></iframe>
+          </div>
+
+          <!-- Card de ubicación sobre el mapa -->
+          <div class="absolute bottom-6 left-6 right-6 bg-[#0D0D0D]/95 border border-[#C9A96E]/30 p-6 backdrop-blur-sm">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-[#C9A96E] flex items-center justify-center flex-shrink-0">
+                <Icon name="map-pin" size={20} class="text-[#0D0D0D]" />
+              </div>
+              <div>
+                <p class="text-white font-medium">{doctor.titulo} {doctor.nombre}</p>
+                <p class="text-[#C9A96E] text-sm">{doctor.especialidad}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

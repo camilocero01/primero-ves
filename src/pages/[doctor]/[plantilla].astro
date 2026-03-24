@@ -38,6 +38,33 @@ import InstalacionesClasica from '../../components/clasica/InstalacionesClasica.
 import TestimoniosClasica from '../../components/clasica/TestimoniosClasica.astro';
 import ContactoClasica from '../../components/clasica/ContactoClasica.astro';
 
+// Minimalista
+import HeroMinimalista from '../../components/minimalista/HeroMinimalista.astro';
+import ServiciosMinimalista from '../../components/minimalista/ServiciosMinimalista.astro';
+import GaleriaMinimalista from '../../components/minimalista/GaleriaMinimalista.astro';
+import SobreMiMinimalista from '../../components/minimalista/SobreMiMinimalista.astro';
+import InstalacionesMinimalista from '../../components/minimalista/InstalacionesMinimalista.astro';
+import TestimoniosMinimalista from '../../components/minimalista/TestimoniosMinimalista.astro';
+import ContactoMinimalista from '../../components/minimalista/ContactoMinimalista.astro';
+
+// Premium
+import HeroPremium from '../../components/premium/HeroPremium.astro';
+import ServiciosPremium from '../../components/premium/ServiciosPremium.astro';
+import GaleriaPremium from '../../components/premium/GaleriaPremium.astro';
+import SobreMiPremium from '../../components/premium/SobreMiPremium.astro';
+import InstalacionesPremium from '../../components/premium/InstalacionesPremium.astro';
+import TestimoniosPremium from '../../components/premium/TestimoniosPremium.astro';
+import ContactoPremium from '../../components/premium/ContactoPremium.astro';
+
+// Vanguardia
+import HeroVanguardia from '../../components/vanguardia/HeroVanguardia.astro';
+import ServiciosVanguardia from '../../components/vanguardia/ServiciosVanguardia.astro';
+import GaleriaVanguardia from '../../components/vanguardia/GaleriaVanguardia.astro';
+import SobreMiVanguardia from '../../components/vanguardia/SobreMiVanguardia.astro';
+import InstalacionesVanguardia from '../../components/vanguardia/InstalacionesVanguardia.astro';
+import TestimoniosVanguardia from '../../components/vanguardia/TestimoniosVanguardia.astro';
+import ContactoVanguardia from '../../components/vanguardia/ContactoVanguardia.astro';
+
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = [];
   for (const doc of doctores) {
@@ -93,6 +120,39 @@ const { config, plantilla } = Astro.props;
         <InstalacionesClasica config={config} />
         <TestimoniosClasica config={config} />
         <ContactoClasica config={config} />
+      </>
+    )}
+    {plantilla === 'minimalista' && (
+      <>
+        <HeroMinimalista config={config} />
+        <ServiciosMinimalista config={config} />
+        <GaleriaMinimalista config={config} />
+        <SobreMiMinimalista config={config} />
+        <InstalacionesMinimalista config={config} />
+        <TestimoniosMinimalista config={config} />
+        <ContactoMinimalista config={config} />
+      </>
+    )}
+    {plantilla === 'premium' && (
+      <>
+        <HeroPremium config={config} />
+        <ServiciosPremium config={config} />
+        <GaleriaPremium config={config} />
+        <SobreMiPremium config={config} />
+        <InstalacionesPremium config={config} />
+        <TestimoniosPremium config={config} />
+        <ContactoPremium config={config} />
+      </>
+    )}
+    {plantilla === 'vanguardia' && (
+      <>
+        <HeroVanguardia config={config} />
+        <ServiciosVanguardia config={config} />
+        <GaleriaVanguardia config={config} />
+        <SobreMiVanguardia config={config} />
+        <InstalacionesVanguardia config={config} />
+        <TestimoniosVanguardia config={config} />
+        <ContactoVanguardia config={config} />
       </>
     )}
   </main>
