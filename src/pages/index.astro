@@ -1,6 +1,6 @@
 ---
 /**
- * PRIMEROVES - Página Principal
+ * DOCTOR LANDING - Página Principal
  * Muestra las 3 plantillas para un doctor específico vía query param: ?doctor=slug
  * Si no se pasa parámetro, muestra doctores de muestra con tabs.
  * Si se pasa un slug de un doctor que NO es de muestra, oculta la sección demo.
@@ -22,8 +22,8 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 ---
 
 <BaseLayout
-  title="PrimeroVes | Tu sitio web médico, primero lo ves, luego decides"
-  description="Diseñamos sitios web profesionales para médicos especialistas. Primero ves tu sitio terminado, luego decides si lo quieres. Sin riesgo."
+  title="Doctor Landing | Landing pages médicas profesionales"
+  description="Diseñamos landing pages profesionales para médicos especialistas. La ves terminada antes de pagar. Sin riesgo, entrega en 24-48h."
 >
   <div class="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
     <!-- Decorative orbs -->
@@ -40,11 +40,13 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
         <div class="flex items-center justify-between h-16 md:h-20">
           <!-- Logo -->
           <a href="#" class="flex items-center gap-2.5 group shrink-0">
-            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/30">
-              <span class="text-white font-bold text-lg leading-none">P</span>
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
             </div>
             <span class="text-xl font-bold text-white tracking-tight">
-              Primero<span class="text-gradient-obsidian">Ves</span>
+              Doctor<span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Landing</span>
             </span>
           </a>
 
@@ -99,21 +101,21 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Left: Text content -->
         <div class="text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 rounded-full text-sm mb-8 border border-violet-500/20 backdrop-blur-sm">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 rounded-full text-sm mb-8 border border-blue-500/20 backdrop-blur-sm">
             <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-            <span class="text-violet-300">Diseño web para médicos especialistas</span>
+            <span class="text-blue-300">Landing pages para médicos especialistas</span>
           </div>
 
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Tu sitio web médico.<br>
-            <span class="text-gradient-obsidian">Primero lo ves.</span>
+            La landing page médica<br>
+            <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">que tus pacientes buscan.</span>
           </h1>
-          
+
           <p class="text-lg md:text-xl text-violet-200/70 max-w-xl mx-auto lg:mx-0 mb-4 font-light">
-            Diseñamos tu sitio web profesional con tu información real.
+            Diseñamos tu landing page profesional con tu información real, lista en 24-48h.
           </p>
           <p class="text-base text-violet-200/70 max-w-lg mx-auto lg:mx-0 mb-10">
-            Lo ves terminado. Si te gusta, lo activas. Si no, no pagas nada.
+            La ves terminada antes de pagar. Si te gusta, la activas. Si no, no pagas nada.
           </p>
 
           <!-- CTA buttons -->
@@ -717,7 +719,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
                 <th class="text-left py-4 px-4 text-violet-200/60 font-medium w-1/4"></th>
                 <th class="py-4 px-4 text-center">
                   <div class="bg-gradient-to-r from-violet-500 to-fuchsia-500/10 border border-violet-500/30 rounded-xl py-4 px-3">
-                    <span class="text-violet-400 font-bold text-lg">PrimeroVes</span>
+                    <span class="text-blue-400 font-bold text-lg">Doctor Landing</span>
                     <p class="text-violet-400/60 text-xs mt-1">Recomendado</p>
                   </div>
                 </th>
@@ -997,7 +999,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
         <!-- CTA final -->
         <div class="text-center mt-16">
           <p class="text-violet-200/60 mb-6 text-sm">Sin riesgo. Sin anticipo. Sin contrato de permanencia.</p>
-          <a href="https://wa.me/573001234567?text=Hola%2C%20quiero%20ver%20mi%20sitio%20web%20médico%20con%20PrimeroVes" 
+          <a href="https://wa.me/573001234567?text=Hola%2C%20quiero%20ver%20mi%20landing%20page%20médica%20con%20Doctor%20Landing" 
              target="_blank"
              class="inline-flex items-center gap-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-slate-900 font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/20 hover:-translate-y-0.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1557,7 +1559,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
               <!-- CTA -->
               <a id="cotizador-cta"
-                 href="https://wa.me/573001234567?text=Hola%2C%20quiero%20cotizar%20mi%20sitio%20web%20con%20PrimeroVes.%20Plan%20base%20%24400.000"
+                 href="https://wa.me/573001234567?text=Hola%2C%20quiero%20cotizar%20mi%20landing%20page%20con%20Doctor%20Landing.%20Plan%20base%20%24400.000"
                  target="_blank"
                  class="mt-6 w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-slate-900 font-bold px-8 py-4 rounded-full text-sm transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/20 hover:-translate-y-0.5">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1606,7 +1608,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
               </div>
               <p class="text-violet-200/70 leading-relaxed">
                 Sabemos que tu tiempo es valioso. Por eso eliminamos las barreras: nada de reuniones interminables, cotizaciones confusas o anticipos sin garantía. 
-                <span class="text-white font-medium">Primero ves tu sitio terminado, luego decides.</span>
+                <span class="text-white font-medium">Ves tu landing page terminada antes de pagar.</span>
               </p>
             </div>
 
@@ -1688,7 +1690,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
             </div>
 
             <!-- CTA -->
-            <a href="https://wa.me/573001234567?text=Hola%2C%20quiero%20saber%20más%20sobre%20PrimeroVes" 
+            <a href="https://wa.me/573001234567?text=Hola%2C%20quiero%20saber%20más%20sobre%20Doctor%20Landing" 
                target="_blank"
                class="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/20 hover:-translate-y-0.5">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1996,7 +1998,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
 
           <!-- Copyright -->
           <p class="text-violet-200/60 text-sm">
-            &copy; {new Date().getFullYear()} PrimeroVes
+            &copy; {new Date().getFullYear()} Doctor Landing
           </p>
         </div>
       </div>
@@ -2185,7 +2187,7 @@ const plantillaInfo: Record<string, { label: string; badge: string; badgeColor: 
         }
 
         // Update WhatsApp CTA link
-        var msg = 'Hola, quiero cotizar mi sitio web con PrimeroVes.\n\n';
+        var msg = 'Hola, quiero cotizar mi landing page con Doctor Landing.\n\n';
         msg += '• Plan base: $400.000\n';
         if (nombres.length > 0) {
           for (var i = 0; i < nombres.length; i++) {
